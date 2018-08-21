@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
-public class DetectFigure : MonoBehaviour {
+public class DetectFigure : MonoBehaviour
+{
 
     public Text figureCompleted;
 
@@ -13,69 +14,79 @@ public class DetectFigure : MonoBehaviour {
     private int angleMinStep;
     private int loopState;
 
-    private bool loopFailed = false;
+    private bool loopCompleted = false;
+    private bool quarterLoopCompleted = false;
+    private bool halfLoopCompleted = false;
+
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         loopState = 0;
         figureCompleted.enabled = false;
-        loopFailed = false;
+        loopCompleted = false;
+        quarterLoopCompleted = false;
+        halfLoopCompleted = false;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
 
         updateAngleValue = transform.rotation.eulerAngles;
-       
-        //Debug.Log(updateAngleValue);
+        //Debug.Log("loop State = " + loopState);
 
-        if (updateAngleValue.x >= 340)
+
+        Debug.Log(updateAngleValue.x);
+
+        Debug.Log("angle min = " + angleMinStep);
+
+        if (loopState == 0)
         {
-           
-            loopState = 1;
+            angleMinStep = 350;
+
+            if (updateAngleValue.x >= 340)
+            {
+                loopState = 1;
+            }
+
+
         }
 
-        if (loopState >= 1 )
+        if (updateAngleValue.x > angleMinStep && !quarterLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 6 && quarterLoopCompleted && !halfLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 10)
+        {
+            loopState = 0;
+
+            Debug.Log("holé");
+
+        }
+
+
+        if (loopState >= 1)
         {
             figureCompleted.enabled = true;
             figureCompleted.text = loopState + " Completed";
         }
-        if (loopState == 0)
+        else
         {
-            figureCompleted.enabled = true;
+            figureCompleted.enabled = false;
         }
-        
-        
+
 
         if (loopState == 1)
         {
-            if (updateAngleValue.x < 340 && updateAngleValue.x > 180)
+            if (updateAngleValue.x < 340 && !quarterLoopCompleted)
             {
-                Debug.Log("done");
-                loopState ++;
+                loopState++;
                 angleMinStep = 340;
             }
-        }
-
-        /*if (loopFailed && updateAngleValue.x > 350)
-        {
-            figureCompleted.enabled = false;
-            //loopFailed = false;
-        }*/
-
-        
-        if (updateAngleValue.x > angleMinStep)
-        {
-            loopFailed = true;
-            loopState = 0;
-            
         }
 
         if (loopState == 2)
         {
             if (updateAngleValue.x < 320 && updateAngleValue.x > 180)
             {
-                loopState ++;
+                loopState++;
                 angleMinStep = 320;
             }
         }
@@ -84,11 +95,91 @@ public class DetectFigure : MonoBehaviour {
         {
             if (updateAngleValue.x < 300 && updateAngleValue.x > 180)
             {
-                loopState ++;
+                loopState++;
+                angleMinStep = 300;
             }
         }
 
-        Debug.Log("loop State = " + loopState);
+        if (loopState == 4)
+        {
+            if (updateAngleValue.x < 285)
+            {
+                loopState++;
+                angleMinStep = 285;
+            }
+            quarterLoopCompleted = true;
+        }
+
+        if (loopState == 5)
+        {
+            if (updateAngleValue.x > 300)
+            {
+                loopState++;
+                angleMinStep = 300;
+            }
+        }
+
+
+        if (loopState == 6)
+        {
+            if (updateAngleValue.x > 320)
+            {
+                loopState++;
+                angleMinStep = 320;
+            }
+        }
+
+        if (loopState == 7)
+        {
+            if (updateAngleValue.x > 355)
+            {
+                loopState++;
+                angleMinStep = 355;
+            }
+
+            halfLoopCompleted = true;
+
+        }
+
+        if (loopState == 8)
+        {
+
+            if (updateAngleValue.x < 10)
+            {
+                loopState++;
+                angleMinStep = 10;
+            }
+        }
+
+        if (loopState == 9)
+        {
+            if (updateAngleValue.x > 30)
+            {
+                loopState++;
+                angleMinStep = 30;
+            }
+        }
+
+        if (loopState == 10)
+        {
+
+            if (updateAngleValue.x > 50)
+            {
+                loopState++;
+                angleMinStep = 50;
+            }
+        }
+
+        if (loopState == 11)
+        {
+
+            if (updateAngleValue.x > 70)
+            {
+                loopState++;
+                angleMinStep = 70;
+            }
+        }
+
 
 
 
