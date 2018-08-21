@@ -35,11 +35,10 @@ public class DetectFigure : MonoBehaviour
 
         updateAngleValue = transform.rotation.eulerAngles;
         //Debug.Log("loop State = " + loopState);
+        //Debug.Log(updateAngleValue.x);
+        //Debug.Log("angle min = " + angleMinStep);
 
 
-        Debug.Log(updateAngleValue.x);
-
-        Debug.Log("angle min = " + angleMinStep);
 
         if (loopState == 0)
         {
@@ -53,24 +52,24 @@ public class DetectFigure : MonoBehaviour
 
         }
 
-        if (updateAngleValue.x > angleMinStep && !quarterLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 6 && quarterLoopCompleted && !halfLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 10)
+        if (updateAngleValue.x > angleMinStep && !quarterLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 6 && quarterLoopCompleted && !halfLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 10 && loopState < 4 || updateAngleValue.x > angleMinStep && loopState >= 15)
         {
             loopState = 0;
 
-            Debug.Log("holé");
+           // Debug.Log("holé");
 
         }
 
-
-        if (loopState >= 1)
+        if (loopCompleted )
         {
             figureCompleted.enabled = true;
-            figureCompleted.text = loopState + " Completed";
+            figureCompleted.text = "loop compleed";
+            loopState = 0;
+            quarterLoopCompleted = false;
+            halfLoopCompleted = false;
+
         }
-        else
-        {
-            figureCompleted.enabled = false;
-        }
+
 
 
         if (loopState == 1)
@@ -180,8 +179,42 @@ public class DetectFigure : MonoBehaviour
             }
         }
 
+        
+        if (loopState == 12)
+        {
+
+            if (updateAngleValue.x > 88)
+            {
+                loopState++;
+                angleMinStep = 70;
+            }
+        }
+
+        if (loopState == 13)
+        {
+
+            if (updateAngleValue.x < 50)
+            {
+                loopState++;
+                angleMinStep = 70;
+            }
+        }
 
 
+        if (loopState == 14)
+        {
+
+            if (updateAngleValue.x < 30)
+            {
+                loopCompleted = true;
+            }
+        }
+        
+    }
+
+
+    void detectLoop()
+    {
 
     }
 }
