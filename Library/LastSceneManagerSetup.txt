@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/Airbus Project/Scenes/SceneTuto.unity
+  isLoaded: 1
+  isActive: 1

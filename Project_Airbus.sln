@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Airbus", "Assembly-CSharp.csproj", "{2CE4542A-7641-C24D-91D7-821F4B2D838F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Airbus", "Assembly-CSharp-Editor.csproj", "{8B793F38-490D-608A-D64B-19B5A8B3579D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CE4542A-7641-C24D-91D7-821F4B2D838F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CE4542A-7641-C24D-91D7-821F4B2D838F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CE4542A-7641-C24D-91D7-821F4B2D838F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CE4542A-7641-C24D-91D7-821F4B2D838F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B793F38-490D-608A-D64B-19B5A8B3579D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B793F38-490D-608A-D64B-19B5A8B3579D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B793F38-490D-608A-D64B-19B5A8B3579D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B793F38-490D-608A-D64B-19B5A8B3579D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

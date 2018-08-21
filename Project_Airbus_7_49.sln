@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Airbus_7_49", "Project_Airbus_7_49.csproj", "{90129297-72E0-9C7A-6CA1-36F14EF02286}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project_Airbus_7_49.Editor", "Project_Airbus_7_49.Editor.csproj", "{0069F524-A644-204D-872E-5DBDF6489660}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90129297-72E0-9C7A-6CA1-36F14EF02286}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90129297-72E0-9C7A-6CA1-36F14EF02286}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90129297-72E0-9C7A-6CA1-36F14EF02286}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90129297-72E0-9C7A-6CA1-36F14EF02286}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0069F524-A644-204D-872E-5DBDF6489660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0069F524-A644-204D-872E-5DBDF6489660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0069F524-A644-204D-872E-5DBDF6489660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0069F524-A644-204D-872E-5DBDF6489660}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
