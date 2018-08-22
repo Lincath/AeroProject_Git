@@ -51,8 +51,26 @@ namespace WeLoveAero
 
 
 
+        #region Properties
+        private float currentMSL ;
+        public float CurrentMSL
+        {
+            get {return currentMSL;}
+        }
+
+        private float currentAGL;
+        public float CurrentAGL
+        {
+            get { return currentAGL; }
+        }
+
+        #endregion
+
+
+
         #region Constantes
         const float poundToKilos = 0.453592f;
+        const float metersToFeet = 3.28084f;
         #endregion
 
 
@@ -162,10 +180,23 @@ namespace WeLoveAero
 
 
 
-
+        //Calcul l'altitude
         void HandleAltitude()
         {
+            //Calcul de l'atitude par rapport au sol 
+            currentMSL = transform.position.y * metersToFeet;
 
+
+            //Calcul de l'altitude par rapport au Raycastpour les obstacles 
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position,Vector3.down, out hit))
+            {
+                if (hit.transform.tag == "ground")
+                {
+                    currentAGL = (transform.position.y - hit.point.y) * metersToFeet;
+                
+                }
+            }
         }
         #endregion
 

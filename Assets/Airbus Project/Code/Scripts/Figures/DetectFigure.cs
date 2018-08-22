@@ -8,33 +8,15 @@ public class DetectFigure : MonoBehaviour
 {
 
     public Text figureCompleted;
-    public Text loopStateText;
-    public Text AngleText;
-
 
     private Vector3 updateAngleValue;
-
 
     private int angleMinStep;
     private int loopState;
 
-
     private bool loopCompleted = false;
     private bool quarterLoopCompleted = false;
     private bool halfLoopCompleted = false;
-    private bool enterLoop = false;
-
-    private bool onLoop = false;
-   
-
-
-    private bool bareelRollCompleted = false;
-
-
-    private float SetcountDownUIfigure;
-    private float countDownUIfigure;
-
-    private float inclinaisonPhoneEnterLoop = 0.0f;
 
 
     // Use this for initialization
@@ -45,44 +27,19 @@ public class DetectFigure : MonoBehaviour
         loopCompleted = false;
         quarterLoopCompleted = false;
         halfLoopCompleted = false;
-        enterLoop = false;
-
-        onLoop = false;
-
-        bareelRollCompleted = false;
-        SetcountDownUIfigure = 2.0f;
-        countDownUIfigure = SetcountDownUIfigure;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (onLoop)
-        {
-            loopStateText.enabled = true;
-            loopStateText.text = "dans la loop";
-        }
-        else
-        {
-            loopStateText.enabled = false;
-        }
 
         updateAngleValue = transform.rotation.eulerAngles;
         //Debug.Log("loop State = " + loopState);
-        //Debug.Log(updateAngleValue.x);
-        //Debug.Log("angle min = " + angleMinStep);
-
-        //loopStateText.text = "Step = " + loopState.ToString();
-        //AngleText.text = "Angle = " + Mathf.Round(updateAngleValue.x).ToString();
 
 
-        if (Input.touchCount > 0) //PARTIE OU ON APPUIE SUR L'ECRAN
-        {
-            //Debug.Log("loop State = " + loopState);
-            //Debug.Log(updateAngleValue.x);
-            //Debug.Log("angle min = " + angleMinStep);
-        }
+        Debug.Log(updateAngleValue.x);
 
+        Debug.Log("angle min = " + angleMinStep);
 
         if (loopState == 0)
         {
@@ -91,72 +48,39 @@ public class DetectFigure : MonoBehaviour
             if (updateAngleValue.x >= 340)
             {
                 loopState = 1;
-                Debug.Log("On recommence");
-                inclinaisonPhoneEnterLoop = Input.acceleration.y;
             }
-        }
-        
 
-        if (loopState > 0)
-        {
-            if (Input.acceleration.y >0 )
-            {
-                loopState = 0;
-                enterLoop = false;
-                quarterLoopCompleted = false;
-                halfLoopCompleted = false;
-                enterLoop = false;
 
-                Debug.Log("holé");
-                onLoop = false;
-
-            }
         }
 
-
-        if (loopCompleted)
+        if (updateAngleValue.x > angleMinStep && !quarterLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 6 && quarterLoopCompleted && !halfLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 10)
         {
-            countDownUIfigure -= Time.deltaTime;
-            figureCompleted.enabled = true;
-            figureCompleted.text = "loop compleed";
             loopState = 0;
-            quarterLoopCompleted = false;
-            halfLoopCompleted = false;
-            enterLoop = false;
-            if (countDownUIfigure <= 0)
-            {
-                countDownUIfigure = SetcountDownUIfigure;
-                loopCompleted = false;
-            }
 
+            Debug.Log("holé");
+
+        }
+
+
+        if (loopState >= 1)
+        {
+            figureCompleted.enabled = true;
+            figureCompleted.text = loopState + " Completed";
         }
         else
         {
             figureCompleted.enabled = false;
         }
 
-        if (enterLoop)
-        {
-            detectLoop();
-        }
-        
 
         if (loopState == 1)
         {
-            Debug.Log("state 1");
-                if (updateAngleValue.x < 340 && !quarterLoopCompleted)
-                {
-                    loopState++;
-                    angleMinStep = 340;
-                    enterLoop = true;
-                }           
-        } 
-        
-    }
-
-    void detectLoop()
-    {
-        onLoop = true;
+            if (updateAngleValue.x < 340 && !quarterLoopCompleted)
+            {
+                loopState++;
+                angleMinStep = 340;
+            }
+        }
 
         if (loopState == 2)
         {
@@ -257,36 +181,7 @@ public class DetectFigure : MonoBehaviour
         }
 
 
-        if (loopState == 12)
-        {
-
-            if (updateAngleValue.x < 88)
-            {
-                loopState++;
-                angleMinStep = 70;
-            }
-        }
-
-        if (loopState == 13)
-        {
-
-            if (updateAngleValue.x < 30)
-            {
-                loopState++;
-                angleMinStep = 70;
-
-            }
-        }
 
 
-        if (loopState == 14)
-        {
-
-            if (updateAngleValue.x < 5)
-            {
-                loopCompleted = true;
-                Debug.Log("JE SUIS LA");
-            }
-        }
     }
 }

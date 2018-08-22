@@ -62,28 +62,15 @@ F:\Unity 3D\Editor\Data\Managed/UnityEngine/UnityEngine.XRModule.dll
 F:\Unity 3D\Editor\Data\Managed/UnityEditor.dll
 F:\Unity 3D\Editor\Data\Managed/Unity.Locator.dll
 F:/Unity 3D/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
 F:/Unity 3D/Editor/Data/UnityExtensions/Unity/Timeline/RuntimeEditor/UnityEngine.Timeline.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
 F:/Unity 3D/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll
 F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll
 F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll
 F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll
-F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
-F:/Unity 3D/Editor/Data/Managed/UnityEditor.Graphs.dll
-F:/Unity 3D/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
-F:/Unity 3D/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
-C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll
 C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll
-C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll
-C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll
 C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll
-C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
+F:/Unity 3D/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Xcode.dll
+F:/Unity 3D/Editor/Data/PlaybackEngines/iOSSupport\UnityEditor.iOS.Extensions.Common.dll
 F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\unity\mscorlib.dll
 F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.dll
 F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Core.dll
@@ -93,6 +80,22 @@ F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\unity\System.Xml.Linq.dll
 F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.dll
 F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\unity\UnityScript.Lang.dll
 F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\unity\Boo.Lang.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/Timeline/Editor/UnityEditor.Timeline.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/TreeEditor/Editor/UnityEditor.TreeEditor.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/Networking/Editor/UnityEditor.Networking.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/Editor/UnityEditor.GoogleAudioSpatializer.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityHoloLens/Editor/UnityEditor.HoloLens.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/Editor/UnityEditor.SpatialTracking.dll
+F:/Unity 3D/Editor/Data/UnityExtensions/Unity/UnityVR/Editor/UnityEditor.VR.dll
+F:/Unity 3D/Editor/Data/Managed/UnityEditor.Graphs.dll
+F:/Unity 3D/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
+F:/Unity 3D/Editor/Data/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
+F:/Unity 3D/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll
+C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll
+C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/Editor/UnityEditor.Analytics.dll
+C:/Users/eleve/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll
+C:/Program Files (x86)/Microsoft Visual Studio Tools for Unity/15.0/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll
 F:\Unity 3D\Editor\Data\Managed/UnityEngine/UnityEngine.ParticlesLegacyModule.dll
 F:\Unity 3D\Editor\Data\Managed/UnityEngine/UnityEngine.SpatialTrackingModule.dll
 F:\Unity 3D\Editor\Data\MonoBleedingEdge\lib\mono\2.0-api\mscorlib.dll
