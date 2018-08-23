@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using WeLoveAero;
 
-namespace WeloveAero
+namespace WeLoveAero
 {
     public class Airplane_ThrottleLever : MonoBehaviour, IAirplane_UI
     {

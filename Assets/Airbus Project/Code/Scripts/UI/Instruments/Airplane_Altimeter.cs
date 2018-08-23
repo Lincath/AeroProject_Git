@@ -54,5 +54,3 @@ namespace WeloveAero
         #endregion
     }
 }
-
-//altimeter OK

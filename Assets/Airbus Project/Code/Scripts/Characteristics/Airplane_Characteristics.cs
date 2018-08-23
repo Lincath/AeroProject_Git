@@ -147,11 +147,11 @@ namespace WeLoveAero
             forwardSpeed = localVelocity.z;
 
             //Clamp de la valeur speed
-            forwardSpeed = Mathf.Clamp(forwardSpeed, 0f, maxMPS);
+            //forwardSpeed = Mathf.Clamp(forwardSpeed, 0f, maxMPS);
 
 
             mph = forwardSpeed * mpsToMph;
-            mph = Mathf.Clamp(mph, 0f, maxMPH);
+           // mph = Mathf.Clamp(mph, 0f, maxMPH);
             normalizeMPH = Mathf.InverseLerp(0f, maxMPH, mph);
 
             //Debug.Log(normalizeMPH);

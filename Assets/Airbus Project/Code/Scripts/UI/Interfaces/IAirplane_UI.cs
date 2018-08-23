@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WeLoveAero;
 
 
- namespace WeloveAero
+namespace WeLoveAero
  {
         public interface IAirplane_UI
         {

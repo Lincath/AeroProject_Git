@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;  //permet de convertire un tableau en une liste
+using WeLoveAero;
 
 
 
-namespace WeloveAero
+namespace WeLoveAero
 {
     public class Airplane_UI_Controller : MonoBehaviour 
     {

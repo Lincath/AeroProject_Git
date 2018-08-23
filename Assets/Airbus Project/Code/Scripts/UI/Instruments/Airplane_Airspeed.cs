@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using WeLoveAero;
 
-namespace WeloveAero
+namespace WeLoveAero
 {
-    public class IP_Airplane_Airspeed : MonoBehaviour, IAirplane_UI
+    public class Airplane_Airspeed : MonoBehaviour, IAirplane_UI
     {
         #region Variables
         [Header("Airspeed Indicator Properties")]
