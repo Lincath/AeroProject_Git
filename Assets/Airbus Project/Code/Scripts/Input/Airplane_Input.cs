@@ -108,6 +108,7 @@ namespace WeLoveAero
         #endregion
 
 
+
         #region Basics Methods
         // Use this for initialization
         void Start()
@@ -126,7 +127,6 @@ namespace WeLoveAero
 
 
 
-
         #region Custom Methods
         protected virtual void HandleInput ()
         {
@@ -141,7 +141,6 @@ namespace WeLoveAero
             // creation de float avec vrai faux  ( comme si c'etait un bool)
             // la condition? deux resultats possible
             brake = Input.GetKey(breakKey) ? 1f : 0f;
-
           
 
             //control des ailerons
@@ -150,10 +149,12 @@ namespace WeLoveAero
                 flaps += 1;
             }
 
+
             if (Input.GetKeyDown(KeyCode.E))
             {
                 flaps -= 1;
             }
+
 
             flaps = Mathf.Clamp(flaps, 0, maxFlapsIncrements);
 
@@ -161,12 +162,14 @@ namespace WeLoveAero
             cameraSwitch = Input.GetKeyDown(cameraKey);
         }
 
+
         //Créez une valeur d'accélérateur qui augmente et diminue progressivement
         protected virtual void StickyThrottleControl()
         {
             stickyThrottle = stickyThrottle + (-throttle * throttleSpeed * Time.deltaTime);
             stickyThrottle = Mathf.Clamp01(stickyThrottle);
         }
+
 
         //clamps les valeurs des inputs
         protected void ClampInputs()

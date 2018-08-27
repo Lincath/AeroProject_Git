@@ -25,15 +25,15 @@ namespace WeloveAero
             if (airplane)
             {
                 float currentAlt = airplane.CurrentMSL;
-                float currentThousands = currentAlt / 1000f;
 
-                //Clamp la valeur en fonctiondes chiffres du cadrande l'altimetre
+                float currentThousands = currentAlt / 1000f;
+                //Clamp la valeur en fonctiondes chiffres du cadran de l'altimetre
                 currentThousands = Mathf.Clamp(currentThousands, 0f, 10f);
 
                 float currentHundreds = currentAlt - (Mathf.Floor(currentThousands) * 1000f);
                 currentHundreds = Mathf.Clamp(currentHundreds, 0f, 1000f);
 
-                Debug.Log(currentAlt);
+                //Debug.Log(currentAlt);
 
                 if (thousandsPointer)
                 {
