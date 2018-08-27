@@ -128,7 +128,7 @@ public class AccelerometerInputButton : MonoBehaviour
 
                     SmoothPlane(false); ///////////////////////////
 
-                    //Debug.Log("neutre");
+                    Debug.Log("neutre");
                 }
 
                 transform.Rotate(Input.acceleration.y - inclinMinY, 0, 0);

@@ -4,11 +4,4 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Airbus Project/Scenes/MainMenu.unity
-    guid: 431fd03c859522546819655a81fa697c
-  - enabled: 1
-    path: Assets/Airbus Project/Scenes/sceneTuto.unity
-    guid: 694eb4f74bf4ca34e8b763af3fc61203
-  m_configObjects: {}
+  m_Scenes: []
