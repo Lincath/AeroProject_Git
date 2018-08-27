@@ -9,15 +9,19 @@ public class DetectFigure : MonoBehaviour
     #region allVariable
 
     public Text figureCompleted;
+<<<<<<< HEAD
     public Text loopStateText;
     public Text AngleText;
 
     private static float inclinMinY = 0;
+=======
+>>>>>>> parent of 58ec681... Loop presque complet !!
 
     private Vector3 updateAngleValueEuler;
     private Quaternion updateAngleValueQuaternion;
     
 
+<<<<<<< HEAD
 
     private int angleMinStepLoop;
     private int angleMinStepInvertedLoop;
@@ -28,7 +32,10 @@ public class DetectFigure : MonoBehaviour
     private int stepInvertedLoop;
     private int stepLeftBareel;
     private int stepRightBareel;
-
+=======
+    private int angleMinStep;
+    private int loopState;
+>>>>>>> parent of 58ec681... Loop presque complet !!
 
     private bool loopCompleted = false;
     private bool invertedLoopCompleted = false;
@@ -37,6 +44,7 @@ public class DetectFigure : MonoBehaviour
 
     private bool quarterLoopCompleted = false;
     private bool halfLoopCompleted = false;
+<<<<<<< HEAD
     private bool onLoop = false;
 
     private bool enterLoop = false;
@@ -50,6 +58,8 @@ public class DetectFigure : MonoBehaviour
     private float countDownUIfigure;
 
     private float inclinaisonPhoneEnterLoop = 0.0f;
+=======
+>>>>>>> parent of 58ec681... Loop presque complet !!
 
     #endregion
 
@@ -65,6 +75,7 @@ public class DetectFigure : MonoBehaviour
 
         quarterLoopCompleted = false;
         halfLoopCompleted = false;
+<<<<<<< HEAD
 
         enterLeftBareel = false;
         onLoop = false;
@@ -74,11 +85,14 @@ public class DetectFigure : MonoBehaviour
 
 
         AccelerometerInputButton AccelerometerInputButton = GetComponent<AccelerometerInputButton>();
+=======
+>>>>>>> parent of 58ec681... Loop presque complet !!
     }
 
 
     void Update()
     {
+<<<<<<< HEAD
         updateAngleValueEuler = transform.localEulerAngles;
         updateAngleValueQuaternion = transform.rotation;
         inclinMinY = AccelerometerInputButton.inclinMinY;
@@ -134,6 +148,14 @@ public class DetectFigure : MonoBehaviour
                 stepRightBareel = 1;
             }
         }
+=======
+
+        updateAngleValue = transform.rotation.eulerAngles;
+        //Debug.Log("loop State = " + loopState);
+        //Debug.Log(updateAngleValue.x);
+        //Debug.Log("angle min = " + angleMinStep);
+
+>>>>>>> parent of 58ec681... Loop presque complet !!
 
         if (stepRightBareel == 1)
         {
@@ -153,11 +175,18 @@ public class DetectFigure : MonoBehaviour
 
             if (updateAngleValueEuler.x >= 340)
             {
+<<<<<<< HEAD
                 stepLoop = 1;
                 inclinaisonPhoneEnterLoop = Input.acceleration.y;
+=======
+                loopState = 1;
+>>>>>>> parent of 58ec681... Loop presque complet !!
             }
+
+
         }
 
+<<<<<<< HEAD
         if (stepLoop == 1)
         {
             if (updateAngleValueEuler.x < 340 && !quarterLoopCompleted)
@@ -196,21 +225,26 @@ public class DetectFigure : MonoBehaviour
 
         #region figure completed
         if (loopCompleted)
+=======
+        if (updateAngleValue.x > angleMinStep && !quarterLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 6 && quarterLoopCompleted && !halfLoopCompleted || updateAngleValue.x < angleMinStep && loopState >= 10 && loopState < 4 || updateAngleValue.x > angleMinStep && loopState >= 15)
         {
-            countDownUIfigure -= Time.deltaTime;
+            loopState = 0;
+
+           // Debug.Log("holé");
+
+        }
+
+        if (loopCompleted )
+>>>>>>> parent of 58ec681... Loop presque complet !!
+        {
             figureCompleted.enabled = true;
             figureCompleted.text = "loop completed";
             stepLoop = 0;
             quarterLoopCompleted = false;
             halfLoopCompleted = false;
-            enterLoop = false;
-            if (countDownUIfigure <= 0)
-            {
-                countDownUIfigure = SetcountDownUIfigure;
-                loopCompleted = false;
-            }
 
         }
+<<<<<<< HEAD
         else if(leftBareelCompleted)
         {
             countDownUIfigure -= Time.deltaTime;
@@ -248,9 +282,14 @@ public class DetectFigure : MonoBehaviour
         {
             detectLoop();
         }
+=======
+
+
+>>>>>>> parent of 58ec681... Loop presque complet !!
 
         if (enterInvertedLoop)
         {
+<<<<<<< HEAD
             detectInvertedLoop();
         }
 
@@ -273,6 +312,14 @@ public class DetectFigure : MonoBehaviour
     void detectLoop()
     {
         onLoop = true;
+=======
+            if (updateAngleValue.x < 340 && !quarterLoopCompleted)
+            {
+                loopState++;
+                angleMinStep = 340;
+            }
+        }
+>>>>>>> parent of 58ec681... Loop presque complet !!
 
 
         if (Input.acceleration.y - inclinMinY > 0.2 || Input.acceleration.x > 0.2 || Input.acceleration.x < -0.2)
@@ -388,11 +435,19 @@ public class DetectFigure : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
 
         if (stepLoop == 12)
         {
 
             if (updateAngleValueEuler.x < 88)
+=======
+        
+        if (loopState == 12)
+        {
+
+            if (updateAngleValue.x > 88)
+>>>>>>> parent of 58ec681... Loop presque complet !!
             {
                 stepLoop++;
                 angleMinStepLoop = 70;
@@ -402,11 +457,18 @@ public class DetectFigure : MonoBehaviour
         if (stepLoop == 13)
         {
 
+<<<<<<< HEAD
             if (updateAngleValueEuler.x < 30)
             {
                 stepLoop++;
                 angleMinStepLoop = 70;
 
+=======
+            if (updateAngleValue.x < 50)
+            {
+                loopState++;
+                angleMinStep = 70;
+>>>>>>> parent of 58ec681... Loop presque complet !!
             }
         }
 
@@ -414,6 +476,7 @@ public class DetectFigure : MonoBehaviour
         if (stepLoop == 14)
         {
 
+<<<<<<< HEAD
             if (updateAngleValueEuler.x < 5)
             {
                 loopCompleted = true;
@@ -651,7 +714,19 @@ public class DetectFigure : MonoBehaviour
             if (updateAngleValueEuler.z < 5)
             {
                 rightBareelCompleted = true;
+=======
+            if (updateAngleValue.x < 30)
+            {
+                loopCompleted = true;
+>>>>>>> parent of 58ec681... Loop presque complet !!
             }
         }
+        
+    }
+
+
+    void detectLoop()
+    {
+
     }
 }
