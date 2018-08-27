@@ -14,7 +14,7 @@ public class AccelerometerInputButton : MonoBehaviour
     static bool calibrationCompleted = false;
 
 
-    public static float inclinMinY = 0;
+    private float inclinMinY = 0;
     private float inclinMinX = 0;
 
     public float speedUpRhightPositionSet = 200f;
