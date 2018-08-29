@@ -1,1 +1,4 @@
-sceneSetups: []
+sceneSetups:
+- path: Assets/Airbus Project/Scenes/MainMenu.unity
+  isLoaded: 1
+  isActive: 1
