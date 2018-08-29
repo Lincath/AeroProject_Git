@@ -36,8 +36,6 @@ namespace WeloveAero
         //Camera Airplane
         protected override void HandleCamera()
         {
-            base.HandleCamera();
-
             //
             RaycastHit hit;
 
@@ -45,7 +43,10 @@ namespace WeloveAero
             {
                 float wantedHeight = origHeight + (minHeightFromGround - hit.distance);
             }
+
+            base.HandleCamera();
         }
     }
 }
 
+//test github 09/08

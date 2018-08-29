@@ -4,23 +4,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 
-public class MainMenu: MonoBehaviour {
-
+public class MainMenu : MonoBehaviour {
+    static string ScenePrecedente;
+    public string SceneActuelle;
+    private string ScenePrecedenteSave;// pour donner une identité au chemin parcouru dans l interface
     public GameObject PanelMainMenu;
     public GameObject MenuPrincipal;
     public GameObject MenuCup;
     public GameObject MenuHangar;
-
-    public GameObject MenuInGame;
-    public GameObject MenuPause;
-
+    public GameObject ChoixDuStage;
+    static int StageBeSelectionned;
+    public int Test;
+    public static string ModeDeJeu;
+    
     //public GameObject ColliderScaleButon;
 
     public GameObject BoutonMenuPrincipal;
 
     private ScriptBouton private_ScripteBouton;
+    private StageTypeScript private_ScriptChoixStage;
     //scenes
     public string sceneNameToLoad;
+
+    
 
 
     //public Scene TutoScene;
@@ -33,25 +39,19 @@ public class MainMenu: MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        MenuPause.SetActive(false);
-        MenuCup.SetActive(false);
-        MenuHangar.SetActive(false);
-        MenuInGame.SetActive(true);
-       // ColliderScaleButon.SetActive(false);
-        /* MenuPause.SetActive(false);
-         MenuPause.SetActive(false);*/
-        Debug.Log("animfinished");
+    
+       
+      // private_ScriptChoixStage = ChoixDuStage.GetComponent<StageTypeScript>();
+      // StageBeSelectionned = private_ScriptChoixStage.StageType;
+//Test = StageBeSelectionned; //on rend acceccible cette variable partout dans les autres scenes
+        // stage type est le nom de la variables dans le script stage type scrpit
 
-        private_ScripteBouton = BoutonMenuPrincipal.GetComponent<ScriptBouton>();
-
-        PlayMainMenu();                                                                      
+        if (ScenePrecedente == null)
+        {            
+            ScenePrecedente = SceneActuelle;       
+        }
+                                                                              
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-
-         //anims
-
-        //animator = GetComponent<Animator>();
-       // animator.SetBool("AnimBoutonType1", true);
-
         animator = GetComponent(typeof(Animator)) as Animator;
         _hashOnOff = Animator.StringToHash("SlideOut");
     }
@@ -65,16 +65,76 @@ public class MainMenu: MonoBehaviour {
             //bool fire = Input.GetButtonDown("Fire1");
             Debug.Log("slideOut");
             animator.SetTrigger(_hashOnOff);
-            //anim.SetInteger(_hashOnOff, True);
-            //  animator.SetBool("slideOut", fire);
-
-
-               //bouton hangar
-           
         }		
 	}
-          // buttons
-   public void changeScene()
+
+    public void backToLastScene ()
+    {
+
+     if(SceneActuelle == "Hangar")
+        {
+
+            if (ScenePrecedente == "MainMenu")
+            {
+               
+                Debug.Log("la scene precedente est :  " + ScenePrecedente);
+                SceneManager.LoadScene("MainMenu");
+            }
+
+            if (ScenePrecedente == "Stage")
+            {                  
+                Debug.Log("la scene precedente est :  " + ScenePrecedente);
+                SceneManager.LoadScene("FreeFlightMenu");
+            }
+        }
+
+        if (SceneActuelle == "Stage")
+        {           
+                Debug.Log("la scene precedente est :  " + ScenePrecedente);
+            SceneManager.LoadScene("MainMenu");       
+        }
+
+    }
+
+   public void PlayFreeMode()
+    {
+        ModeDeJeu = "FreeMode";
+        PlayHangar();
+    }
+    public void PlayStagesMode()
+    {
+        ModeDeJeu = "StageMode";
+        PlayStage();
+    }
+    public void PlayCupMode()
+    {
+        ModeDeJeu = "CupMode";
+        PlayHangar();
+
+
+    }
+
+    public void PlayStage()
+    {
+        ScenePrecedente = SceneActuelle;  //deviendra la bonne scene precedente dans la scene a suivre
+        SceneManager.LoadScene("FreeFlightMenu");
+    }
+
+    public void PlayHangar()
+    {
+        if (ScenePrecedente == "MainMenu")
+        {
+            ScenePrecedente = SceneActuelle;  //deviendra la bonne scene precedente dans la scene a suivre
+            SceneManager.LoadScene("HangarScene");
+
+            Test = 4;
+            Debug.Log("Tous les avions possible test: "+ Test);
+        }
+            ScenePrecedente = SceneActuelle;  //deviendra la bonne scene precedente dans la scene a suivre
+        SceneManager.LoadScene("HangarScene");
+    }
+
+    public void changeScene()
     {
         SceneManager.LoadScene(sceneNameToLoad);// change de scene
     }
@@ -84,34 +144,12 @@ public class MainMenu: MonoBehaviour {
         SceneManager.LoadScene("menu 1");
     }
 
-    public void PlayMainMenu()
+
+  public void PlayTuto()     //en attendant des niveaux spécifiques
     {
-        PanelMainMenu.SetActive(true);
-        MenuPrincipal.SetActive(true);
-        MenuHangar.SetActive(false);
-        MenuPause.SetActive(false);
-        MenuInGame.SetActive(false);
-        InGame = false;
-       // GamePause = false;
-        Time.timeScale = 1;
-
-    }
-
-    public void PlayTuto()
-    {
-        animator.SetBool("slideOut", true);
-        Debug.Log("slideOut");
-        animator.SetTrigger(_hashOnOff);
-        animator.SetBool("AnimBoutonType1", true);
-        Debug.Log("Tuto");
-        //PanelMainMenu.SetActive(false);
-       // MenuInGame.SetActive(true); 
-        InGame = true;
-
-
-        SceneManager.LoadScene("TutoScene");
-
-    }
+        ScenePrecedente = SceneActuelle;
+        SceneManager.LoadScene("SceneTuto");
+    }   
 
     public void ChangeScene(int ChangeScene)
     {
@@ -120,79 +158,5 @@ public class MainMenu: MonoBehaviour {
         Debug.Log("scene loaded: "+ ChangeScene);
 
     }
-
-    public void PlayPauseMenu()
-    {
-        Debug.Log("pause");
-        MenuInGame.SetActive(false);
-        MenuPause.SetActive(true);
-        InGame = true;
-        Time.timeScale = 0;
-    }
-
-    public void EndPauseMenu()
-    {
-        Debug.Log("reprise jeu");
-        MenuInGame.SetActive(true);
-        MenuPause.SetActive(false);
-        InGame = true;
-        Time.timeScale = 1;
-    }
-
-    public void restartCurrentScene()
-    {
-        Scene scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.name);
-    }
-
-    public void PlayHangar()
-    {
-        //animator.SetBool("test", true);
-        Debug.Log("PlayHangar");
-        MenuPrincipal.SetActive(false);
-        MenuHangar.SetActive(true);
-        /*if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("AnimBoutonType1"))
-        {
-            Debug.Log("animfinished");
-            MenuPrincipal.SetActive(false);
-            MenuHangar.SetActive(true);
-        }         */
-    }
-
-    public void MenuHangarToMainMenu()
-    {
-        Debug.Log("pressBack");
-        MenuHangar.SetActive(false);
-        MenuPrincipal.SetActive(true);
-
-        private_ScripteBouton.ResetBoutons();
-    }
-
-    public void PlayCup()
-    {
-
-        //animator.SetBool("test", true);
-        Debug.Log("PlayCup");
-        MenuPrincipal.SetActive(false);
-        MenuCup.SetActive(true);
-     
-       // ColliderScaleButon.SetActive(true);
-    }
-
-    public void MenuCupToMainMenu()
-    {
-       // ColliderScaleButon.SetActive(false);
-        Debug.Log("pressBack");
-        MenuCup.SetActive(false);
-        MenuPrincipal.SetActive(true);
-
-        private_ScripteBouton.ResetBoutons();
-    }
-
-    public void Test()
-    {
-        Debug.Log("fonction Appelée");
-    }
-
     
 }

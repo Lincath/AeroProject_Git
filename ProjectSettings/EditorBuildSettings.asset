@@ -4,4 +4,17 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/MainMenu.unity
+    guid: 431fd03c859522546819655a81fa697c
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/SceneTuto.unity
+    guid: 694eb4f74bf4ca34e8b763af3fc61203
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/HangarScene.unity
+    guid: 55d941ec8e676dc40a3f02e702884dab
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/FreeFlightMenu.unity
+    guid: e6d898de928e7d14886febb8cf2c2d52
+  m_configObjects: {}

@@ -25,111 +25,44 @@ namespace WeLoveAero
         #region Variables
         [Header("Engine Properties")]
         public float maxForce = 200f;
-        public float maxRPM = 2550f;
-        public float shutOffSpeed = 2f;
-        public AnimationCurve powerCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
+        public float maxRPM = 2250f;                 //rotation helice par minute
+
+        public AnimationCurve powerCurve = AnimationCurve.Linear(0f,0f,1f,1f);
 
         [Header("Propellers")]
         public Airplane_Propeller propeller;
-
-
-        private bool isShutOff = false;
-        private float lastThrottleValue;
-        private float finalShutoffThrottleValue;
-
-        private Airplane_Fuel fuel;
-        #endregion
-
-
-
-        #region Properties
-        public bool ShutEngineOff
-        {
-            set { isShutOff = value; }
-        }
-
-        private float currentRPM;
-        public float CurrentRPM
-        {
-            get { return currentRPM; }
-        }
         #endregion
 
 
 
         #region Basics Methods
-        void Start()
-        {
-            if (!fuel)
-            {
-                fuel = GetComponent<Airplane_Fuel>();
-                if (fuel)
-                {
-                    fuel.InitFuel();
-                }
-            }
-        }
+
         #endregion
 
 
 
         #region Custom Methods
-        public Vector3 CalculateForce(float throttle)
+        public Vector3 CalculateForce (float throttle)
         {
-            //Calcualte Power
+            //Calcul Puissance
             float finalThrottle = Mathf.Clamp01(throttle);
+            finalThrottle = powerCurve.Evaluate(finalThrottle);
 
 
-            if (!isShutOff)
-            {
-                finalThrottle = powerCurve.Evaluate(finalThrottle);
-                lastThrottleValue = finalThrottle;
-            }
-            else
-            {
-                lastThrottleValue -= Time.deltaTime * shutOffSpeed;
-                lastThrottleValue = Mathf.Clamp01(lastThrottleValue);
-                finalShutoffThrottleValue = powerCurve.Evaluate(lastThrottleValue);
-                finalThrottle = finalShutoffThrottleValue;
-            }
+            //création du vecteur translation force
+            float finalPower = finalThrottle * maxForce;
+            Vector3 finalForce = transform.TransformDirection(transform.forward) * finalPower;
 
 
-            //Calculate RPM's
-            currentRPM = finalThrottle * maxRPM;
+            //calcul des tours par minutes 
+            float currentRPM = finalThrottle * maxRPM;
             if (propeller)
             {
                 propeller.HandlePropeller(currentRPM);
             }
 
-
-            //Process the Fuel
-            HandleFuel(finalThrottle);
-
-
-            //Create Force
-            float finalPower = finalThrottle * maxForce;
-            Vector3 finalForce = transform.forward * finalPower;
-            //            Debug.Log(finalForce.magnitude * 0.727f);
-
             return finalForce;
         }
-
-
-        void HandleFuel(float throttleValue)
-        {
-            //Handle Fuel
-            if (fuel)
-            {
-                fuel.UpdateFuel(throttleValue);
-                if (fuel.CurrentFuel <= 0f)
-                {
-                    isShutOff = false;
-                }
-            }
-        }
         #endregion
-
-
-
     }
 }

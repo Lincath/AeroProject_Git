@@ -5,8 +5,7 @@ using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class AccelerometerInputButton : MonoBehaviour
-{
+public class AccelerometerInputButton : MonoBehaviour {
 
     public float speed = 100F;
     public float rotationTurnMax = 45f;
@@ -14,7 +13,7 @@ public class AccelerometerInputButton : MonoBehaviour
     static bool calibrationCompleted = false;
 
 
-    public static float inclinMinY = 0;
+    private float inclinMinY = 0;
     private float inclinMinX = 0;
 
     public float speedUpRhightPositionSet = 200f;
@@ -33,12 +32,12 @@ public class AccelerometerInputButton : MonoBehaviour
     public Text calibrationTxt;
     public Text countDownTxt;
 
-    // public GameObject panelRight;
+   // public GameObject panelRight;
     public GameObject panelLeft;
-
+    
 
     private Vector3 angleValue;
-
+    
 
 
     // Use this for initialization
@@ -52,14 +51,14 @@ public class AccelerometerInputButton : MonoBehaviour
         countDownTxt.enabled = false;
         countDown = setCountDown;
 
-
+       
 
         // panelRight.SetActive(true);
         panelLeft.SetActive(true);
 
         speedUpRhightPosition = speedUpRhightPositionSet;
         smoothAngle = smoothAngleSetUp;
-
+      
     }
 
     // Update is called once per frame
@@ -79,7 +78,7 @@ public class AccelerometerInputButton : MonoBehaviour
         {
             if (Input.touchCount > 0) //PARTIE OU ON APPUIE SUR L'ECRAN
             {
-
+                
 
                 Touch touch = Input.GetTouch(0);
                 if (touch.position.x > 600)
@@ -95,7 +94,7 @@ public class AccelerometerInputButton : MonoBehaviour
 
                 if (touch.position.x < 200)
                 {
-                    // panelRight.SetActive(true);
+                   // panelRight.SetActive(true);
 
 
                     transform.Rotate(Input.acceleration.y - inclinMinY, 0, 0);
@@ -116,7 +115,7 @@ public class AccelerometerInputButton : MonoBehaviour
                 {
                     SmoothPlane(true);
                 }
-
+                
                 else if (Input.acceleration.x < -0.1 && angleValue.z < 355 && angleValue.z > 180)
                 {
                     SmoothPlane(true);
@@ -128,10 +127,10 @@ public class AccelerometerInputButton : MonoBehaviour
 
                     SmoothPlane(false); ///////////////////////////
 
-                    //Debug.Log("neutre");
+                    Debug.Log("neutre");
                 }
 
-                transform.Rotate(Input.acceleration.y - inclinMinY, 0, 0);
+                transform.Rotate(Input.acceleration.y - inclinMinY , 0, 0);
             }
 
 
@@ -148,21 +147,21 @@ public class AccelerometerInputButton : MonoBehaviour
             {
                 calibrationTxt.enabled = false;
             }
-
-
+           
+            
         }
-
+        
         transform.Translate(Vector3.forward * Time.deltaTime * speed); // FAIT AVANCER L'AVION EN LIGNE DROITE
-
+        
     }
 
-    //AJOUTE UN SMOOTH QUAND L'AVION SE REMET DROIT
+        //AJOUTE UN SMOOTH QUAND L'AVION SE REMET DROIT
 
     void SmoothPlane(bool smoothUpRight)
 
     {
-        // Debug.Log("pink fluffy unicorn dancing on rainbows");
-        if (smoothUpRight)
+       // Debug.Log("pink fluffy unicorn dancing on rainbows");
+       if (smoothUpRight)
         {
             transform.Rotate(0, 0, -Input.acceleration.x * Time.deltaTime * speedUpRhightPosition);
 
@@ -182,7 +181,7 @@ public class AccelerometerInputButton : MonoBehaviour
             }
         }
 
-        else if (!smoothUpRight)
+       else if (!smoothUpRight)
         {
 
             //// AU DESSUS DE ROTATION TURN MAX (45°) L'AVION ARRETE DE SE RENVERSER
@@ -206,7 +205,7 @@ public class AccelerometerInputButton : MonoBehaviour
 
             if (angleValue.z > rotationTurnMax - 10 && angleValue.z < 180)
             {
-                if (smoothAngle > 0.5f)
+                if(smoothAngle>0.5f)
                 {
                     smoothAngle -= Time.deltaTime * .05f;
                 }
@@ -228,7 +227,7 @@ public class AccelerometerInputButton : MonoBehaviour
     }
 
 
-    public void restartScene()
+    public void restartScene ()
     {
         Debug.Log("restart Lvl");
         Scene scene = SceneManager.GetActiveScene();
