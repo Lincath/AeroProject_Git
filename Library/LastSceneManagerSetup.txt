@@ -1,4 +1,1 @@
-sceneSetups:
-- path: Assets/Airbus Project/Scenes/Scene_Test_Figure.unity
-  isLoaded: 1
-  isActive: 1
+sceneSetups: []

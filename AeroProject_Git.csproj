@@ -322,12 +322,18 @@
     <Compile Include="Assets\Airbus Project\Code\Scripts\Controller\Rigidbody_Controller.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Data\Airplane_Preset.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Engine\Airplane_Engine.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\Engine\Airplane_Fuel.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Features\Airplane_GroundEffect.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Figures\DetectFigure.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\FX\ReactorAnimScript.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\FX\VitesseFxScript.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\Gyro\AccelerometerInput.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Gyro\AccelerometerInputButton.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Gyro\RotationHelice.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Gyro\SideCamaeraMovment.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Input\Airplane_Input.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\Input\Android_Airplane_Input.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\Input\Android_Airplane_Input2.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Input\Xbox_Airplane_Input.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Multi\AI_MessageManager.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Multi\AI_NetworkManager_Custom.cs" />
@@ -336,12 +342,26 @@
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\ChooseColorTrail.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\CloudGeneration.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Hangar.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Instruments\Airplane_Airspeed.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Instruments\Airplane_Altimeter.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Instruments\Airplane_FlapLever.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Instruments\Airplane_FuelGauge.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Instruments\Airplane_Horizon.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Instruments\Airplane_Tachometer.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Instruments\Airplane_ThrottleLever.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Interfaces\Airplane_UI_Controller.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\Interfaces\IAirplane_UI.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\interSceneVariables.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\MainMenu.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\MainMenuInGame.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\PlaneTypeScript.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\SceneChangeHolder.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\ScriptBouton.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\ScriptButtonInGame.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\UI\ScriptComportementBouton.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\StageTypeScript.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\StageTypeScriptInfos.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\UI\testChildScriptChoixAvion.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Wheels\Airplane_Wheel.cs" />
   </ItemGroup>
   <ItemGroup>

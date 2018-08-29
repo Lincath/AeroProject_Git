@@ -384,6 +384,7 @@
     <Compile Include="Assets\Airbus Project\Code\Editor\Airplane_Setup_Windows.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Controller\Editor\Airplane_Controller_Editor.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Input\Editor\Airplane_Input_Editor.cs" />
+    <Compile Include="Assets\Airbus Project\Code\Scripts\Input\Editor\Android_Airplane_Editor.cs" />
     <Compile Include="Assets\Airbus Project\Code\Scripts\Input\Editor\Xbox_Airplane_Input_Editor.cs" />
   </ItemGroup>
   <ItemGroup>
