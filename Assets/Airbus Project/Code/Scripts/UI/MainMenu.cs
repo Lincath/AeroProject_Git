@@ -94,6 +94,14 @@ public class MainMenu : MonoBehaviour {
             SceneManager.LoadScene("MainMenu");       
         }
 
+        if (SceneActuelle == "Database")
+        {
+            Debug.Log("la scene precedente est :  " + ScenePrecedente);
+            SceneManager.LoadScene("MainMenu");
+        }
+
+
+
     }
 
    public void PlayFreeMode()
@@ -109,7 +117,7 @@ public class MainMenu : MonoBehaviour {
     public void PlayCupMode()
     {
         ModeDeJeu = "CupMode";
-        PlayHangar();
+        PlayLogIn();
 
 
     }
@@ -132,6 +140,13 @@ public class MainMenu : MonoBehaviour {
         }
             ScenePrecedente = SceneActuelle;  //deviendra la bonne scene precedente dans la scene a suivre
         SceneManager.LoadScene("HangarScene");
+    }
+
+    public void PlayLogIn()
+    {
+        ScenePrecedente = SceneActuelle;
+        SceneManager.LoadScene("Database");
+
     }
 
     public void changeScene()

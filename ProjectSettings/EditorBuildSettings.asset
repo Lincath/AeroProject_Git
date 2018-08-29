@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Airbus Project/Scenes/HangarScene.unity
     guid: 55d941ec8e676dc40a3f02e702884dab
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/Database.unity
+    guid: d7e7223dad26a424eafd12f104af0805
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/gametestkvn.unity
+    guid: d664e8502b295af4880968a14a1b456b
   m_configObjects: {}

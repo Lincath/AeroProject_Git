@@ -9,6 +9,7 @@ public class StageTypeScript : MainMenu {
     protected static int TestStageTypeSave;
     private bool CanPlayNextStep;
     public GameObject ButtonPlay;
+    public GameObject LeaderBoard;
     public string planeName;
     public GameObject AllPlaneShowed;
     public GameObject planeShowed;
@@ -29,6 +30,13 @@ public class StageTypeScript : MainMenu {
         {
             CanPlayNextStep = false;
             ButtonPlay.SetActive(false);
+
+            if (LeaderBoard != null)
+            {
+                LeaderBoard.SetActive(false);
+            }
+            
+
         }
     }
 	
@@ -39,7 +47,10 @@ public class StageTypeScript : MainMenu {
 
     public void DefStageType(int StageTypeSave)
     {
-       
+        if (LeaderBoard != null)
+        { 
+             LeaderBoard.SetActive(true);
+        }
         ButtonPlay.SetActive(true);
         CanPlayNextStep = true;
         //StageType = newValue;
