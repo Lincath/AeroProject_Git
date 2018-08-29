@@ -134,7 +134,11 @@ MonoBehaviour:
   m_MinSize: {x: 781, y: 492}
   m_MaxSize: {x: 16006, y: 14042}
   vertical: 0
+<<<<<<< HEAD
   controlID: 9
+=======
+  controlID: 130
+>>>>>>> 47bdcc9caddea60fdbb6dc51a28f6fd398319056
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -158,7 +162,11 @@ MonoBehaviour:
   m_MinSize: {x: 504, y: 492}
   m_MaxSize: {x: 12004, y: 14042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 23
+=======
+  controlID: 27
+>>>>>>> 47bdcc9caddea60fdbb6dc51a28f6fd398319056
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,7 +191,11 @@ MonoBehaviour:
   m_MinSize: {x: 504, y: 221}
   m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 24
+=======
+  controlID: 28
+>>>>>>> 47bdcc9caddea60fdbb6dc51a28f6fd398319056
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -279,8 +291,8 @@ MonoBehaviour:
     y: 0
     width: 459
     height: 947
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
@@ -341,7 +353,7 @@ MonoBehaviour:
   m_MaximizeOnPlay: 0
   m_Gizmos: 0
   m_Stats: 0
-  m_SelectedSizes: 07000000000000000000000000000000000000000000000000000000000000000000000000000000
+  m_SelectedSizes: 0b000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -421,7 +433,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 1afbffff00000000
+=======
+    m_ExpandedIDs: 76ebfffffaf6ffff94f8ffffe6fbffff00000000704f0000
+>>>>>>> 47bdcc9caddea60fdbb6dc51a28f6fd398319056
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -471,14 +487,14 @@ MonoBehaviour:
     height: 501
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 2168.2382899199997
+  lastFramingTime: 86.69705403900926
   m_2DMode: 0
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -121.88094, y: -993.1748, z: 1096.5782}
+    m_Target: {x: 640, y: 400, z: 0}
     speed: 2
-    m_Value: {x: -121.88094, y: -993.1748, z: 1096.5782}
+    m_Value: {x: 640, y: 400, z: 0}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -510,9 +526,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.23979424, y: -0.28363124, z: 0.07351555, w: -0.9256275}
   m_Size:
-    m_Target: 206.2457
+    m_Target: 2490.571
     speed: 2
-    m_Value: 206.2457
+    m_Value: 2490.571
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -598,7 +614,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 222a0000
     m_LastClickedID: 10786
+<<<<<<< HEAD
     m_ExpandedIDs: 000000001a2c0000582c00008a2c0000a22c00008e2d0000002e0000302e0000442e0000283000002a300000f030000038310000f4310000be320000fe320000dc380000de380000e0380000e2380000e4380000e6380000e8380000ea380000ec380000ee380000
+=======
+    m_ExpandedIDs: 000000008c2a0000fc2a0000002c0000722c0000a22c00009a2e00009c2e0000aa2f000066300000303100007031000050320000523200005432000056320000583200005a3200005c3200005e3200006032000062320000
+>>>>>>> 47bdcc9caddea60fdbb6dc51a28f6fd398319056
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -623,6 +643,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
+<<<<<<< HEAD
     scrollPos: {x: 0, y: 258}
     m_SelectedIDs: 
     m_LastClickedID: 0
@@ -631,13 +652,27 @@ MonoBehaviour:
       m_UserAcceptedRename: 0
       m_Name: 
       m_OriginalName: 
+=======
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 
+    m_LastClickedID: 0
+    m_ExpandedIDs: ffffffff000000008c2a0000fc2a0000002c0000722c0000a22c00009a2e00009c2e0000622f0000aa2f000066300000303100007031000050320000523200005432000056320000583200005a3200005c3200005e3200006032000062320000
+    m_RenameOverlay:
+      m_UserAcceptedRename: 0
+      m_Name: MainMenu
+      m_OriginalName: MainMenu
+>>>>>>> 47bdcc9caddea60fdbb6dc51a28f6fd398319056
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
+<<<<<<< HEAD
       m_UserData: 0
+=======
+      m_UserData: 11006
+>>>>>>> 47bdcc9caddea60fdbb6dc51a28f6fd398319056
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 11
