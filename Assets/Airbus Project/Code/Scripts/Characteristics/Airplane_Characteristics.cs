@@ -85,7 +85,9 @@ namespace WeLoveAero
 
         private float angleOfAttack;
         private float pitchAngle;
-        private float rollAngle;
+        public float rollAngle;
+
+        private float csEfficiencyValue;
 
         #endregion
 
@@ -127,7 +129,8 @@ namespace WeLoveAero
                 CalculateLift();
                 CalculateDrag();
 
-                //Gestion des control
+                //Gestion des controls
+                HandleControlSurfaceEfficiency();
                 HandlePitch();
                 HandleRoll();
                 HandleYaw();
@@ -147,11 +150,11 @@ namespace WeLoveAero
             forwardSpeed = localVelocity.z;
 
             //Clamp de la valeur speed
-            forwardSpeed = Mathf.Clamp(forwardSpeed, 0f, maxMPS);
+            //forwardSpeed = Mathf.Clamp(forwardSpeed, 0f, maxMPS);
 
 
             mph = forwardSpeed * mpsToMph;
-            mph = Mathf.Clamp(mph, 0f, maxMPH);
+           // mph = Mathf.Clamp(mph, 0f, maxMPH);
             normalizeMPH = Mathf.InverseLerp(0f, maxMPH, mph);
 
             //Debug.Log(normalizeMPH);
@@ -185,7 +188,7 @@ namespace WeLoveAero
 
         void CalculateDrag()
         {
-            //Calcul de le rssistance de l'air
+            //Calcul de le résistance de l'air
             float speedDrag = forwardSpeed * dragFactor;
 
             //Bonus de resistance avec les flaps ouvert
@@ -212,6 +215,12 @@ namespace WeLoveAero
         }
 
 
+        void HandleControlSurfaceEfficiency()
+        {
+            csEfficiencyValue = controlSurfaceEfficiency.Evaluate(normalizeMPH);
+        }
+
+
 
         void HandlePitch()
         {
@@ -221,7 +230,7 @@ namespace WeLoveAero
             pitchAngle = Vector3.Angle(transform.forward, flatForward);
             //Debug.Log(pitchAngle);
 
-            Vector3 pitchTorque = input.Pitch * pitchSpeed * transform.right;
+            Vector3 pitchTorque = input.Pitch * pitchSpeed * transform.right * csEfficiencyValue;
             rb.AddTorque(pitchTorque);
         }
 
@@ -234,7 +243,7 @@ namespace WeLoveAero
             flatRight = flatRight.normalized;
             rollAngle = Vector3.SignedAngle(transform.right, flatRight,transform.forward);
 
-            Vector3 rollTorque = -input.Roll * rollSpeed * transform.forward;
+            Vector3 rollTorque = -input.Roll * rollSpeed * transform.forward * csEfficiencyValue;
             rb.AddTorque(rollTorque);
 
         }
@@ -243,7 +252,7 @@ namespace WeLoveAero
 
         void HandleYaw()
         {
-            Vector3 yawTorque = input.Yaw * yawSpeed * transform.up;
+            Vector3 yawTorque = input.Yaw * yawSpeed * transform.up * csEfficiencyValue;
             rb.AddTorque(yawTorque);
         }
 
