@@ -216,6 +216,22 @@ public class DetectFigure : MonoBehaviour
             }
 
         }
+       
+        else if (invertedLoopCompleted)
+        {
+            countDownUIfigure -= Time.deltaTime;
+            figureCompleted.enabled = true;
+            figureCompleted.text = "inverted loop completed";
+            stepInvertedLoop = 0;
+
+            if (countDownUIfigure <= 0)
+            {
+                countDownUIfigure = SetcountDownUIfigure;
+                invertedLoopCompleted = false;
+            }
+        }
+
+
         else if (leftBareelCompleted)
         {
             countDownUIfigure -= Time.deltaTime;
@@ -430,17 +446,18 @@ public class DetectFigure : MonoBehaviour
                 loopCompleted = true;
             }
         }
+
     }
-
-
+    
     void detectInvertedLoop()
     {
-        if (updateAngleValueEuler.x < angleMinStepInvertedLoop && stepInvertedLoop <= 2 || stepInvertedLoop > 3 && updateAngleValueEuler.x > angleMinStepInvertedLoop && stepInvertedLoop <= 5 || stepInvertedLoop > 7 && updateAngleValueEuler.x > angleMinStepInvertedLoop && stepInvertedLoop < 10)
+        if (updateAngleValueEuler.x < angleMinStepInvertedLoop && stepInvertedLoop <= 2 || stepInvertedLoop > 3 && updateAngleValueEuler.x > angleMinStepInvertedLoop && stepInvertedLoop <= 5 || stepInvertedLoop >= 8 && updateAngleValueEuler.x > angleMinStepInvertedLoop && stepInvertedLoop < 9 || stepInvertedLoop > 10 && updateAngleValueEuler.x < angleMinStepInvertedLoop)
         {
-            Debug.Log(stepInvertedLoop);
+            
             stepInvertedLoop = 0;
-            Debug.Log(updateAngleValueEuler.x);
-            Debug.Log(angleMinStepInvertedLoop);
+
+            Debug.Log("angle = " + updateAngleValueEuler.x);
+            Debug.Log("angle mémoire = " + angleMinStepInvertedLoop);
             enterInvertedLoop = false;
         }
 
@@ -505,10 +522,9 @@ public class DetectFigure : MonoBehaviour
 
         if (stepInvertedLoop == 8)
         {
-            if (updateAngleValueEuler.x > 285 && updateAngleValueEuler.x > 180)
+            if (updateAngleValueEuler.x < 285 && updateAngleValueEuler.x > 180)
             {
-
-                Debug.Log("olé");
+                
                 stepInvertedLoop++;
                 angleMinStepInvertedLoop = 285;
 
@@ -517,10 +533,29 @@ public class DetectFigure : MonoBehaviour
 
         if (stepInvertedLoop == 9)
         {
-            if (updateAngleValueEuler.x < 300 && updateAngleValueEuler.x > 180)
+            if (updateAngleValueEuler.x > 300 && updateAngleValueEuler.x > 180)
             {
                 stepInvertedLoop++;
-                angleMinStepInvertedLoop = 280;
+                angleMinStepInvertedLoop = 300;
+
+            }
+        }
+
+        if (stepInvertedLoop == 10)
+        {
+            if (updateAngleValueEuler.x > 340 && updateAngleValueEuler.x > 180)
+            {
+                stepInvertedLoop++;
+                angleMinStepInvertedLoop = 340;
+
+            }
+        }
+
+        if (stepInvertedLoop == 11)
+        {
+            if (updateAngleValueEuler.x > 355 && updateAngleValueEuler.x > 180)
+            {
+                invertedLoopCompleted = true;
 
             }
         }
@@ -625,7 +660,6 @@ public class DetectFigure : MonoBehaviour
 
     }
     
-
     void detectRightBareel()
     {
 

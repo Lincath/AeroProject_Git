@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f519060400e805a45b1dc257c480c0f5
+guid: 80a4ca127ba201a4ca6277d025b3f663
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -11,7 +11,8 @@ TrueTypeFontImporter:
   fontName: Codename Coder Free 4F
   fontNames:
   - Codename Coder Free 4F
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f519060400e805a45b1dc257c480c0f5, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1
