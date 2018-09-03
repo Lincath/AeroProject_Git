@@ -14,7 +14,7 @@ public class AccelerometerInputButton : MonoBehaviour
     static bool calibrationCompleted = false;
 
 
-    public static float inclinMinY = 0;
+    private float inclinMinY = 0;
     private float inclinMinX = 0;
 
     public float speedUpRhightPositionSet = 200f;
@@ -128,7 +128,7 @@ public class AccelerometerInputButton : MonoBehaviour
 
                     SmoothPlane(false); ///////////////////////////
 
-                    //Debug.Log("neutre");
+                    Debug.Log("neutre");
                 }
 
                 transform.Rotate(Input.acceleration.y - inclinMinY, 0, 0);

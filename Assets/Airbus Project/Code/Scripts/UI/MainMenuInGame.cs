@@ -6,17 +6,11 @@ using UnityEngine.UI;
 
 
 public class MainMenuInGame : MonoBehaviour {
-
-   
-
-    private ReactorAnimScript scriptAnimReacteur;
-    private int ModeMoteur;
-    public GameObject Reacteur;
-    /*
-       public GameObject PanelMainMenu;
-       public GameObject MenuPrincipal;
-       public GameObject MenuCup;
-       public GameObject MenuHangar;       */
+ /*
+    public GameObject PanelMainMenu;
+    public GameObject MenuPrincipal;
+    public GameObject MenuCup;
+    public GameObject MenuHangar;       */
 
     public GameObject MenuInGame;
     public GameObject MenuPause;
@@ -24,8 +18,6 @@ public class MainMenuInGame : MonoBehaviour {
     public GameObject smokegameObject;
 
     private ScriptBouton private_ScripteBouton;
-
-   
     //scenes
     public string sceneNameToLoad;
 
@@ -42,25 +34,23 @@ public class MainMenuInGame : MonoBehaviour {
     public Button boutonFlaps1;
     public Button boutonFlaps2;
     public Button boutonFlaps3;
-   
+
     private float pourcentageManetteMoteur;
 
     private int flapsMode;
-  //  public float PourcentageSliderMoteur;
+    public float PourcentageSliderMoteur;
 
     // Use this for initialization
     void Start () {
-       // smokegameObject.SetActive(false);
-        scriptAnimReacteur = Reacteur.GetComponent<ReactorAnimScript>();
+
        
-
         //colorFlaps.highlightedColor = colorGreen;
-
+      
 
         /*ColorBlock cb = buttonSmoke.colors;
         ColorBlock colorFlaps = boutonFlaps1.colors;      */
 
-
+       
         //buttonSmoke.colors = cb;
         SmokeLevel = 500;
         MenuPause.SetActive(false);
@@ -82,44 +72,46 @@ public class MainMenuInGame : MonoBehaviour {
 
         if (smokeOn == true)
         {
-            //Smokeon();
+
             // smokegameObject.GetComponentsInChildren<UnityEngine.UI.Text>().text= "on";
             //ColorBlock cb = buttonSmoke.colors;
-            //Debug.Log("SmokeLevel:" + SmokeLevel);
-
-
+           
+            
             if (SmokeLevel > 1)
             {
-              
-                //cb.highlightedColor = colorActive;
-                //  buttonSmoke.colors = cb;
-                //smoke.Emit(1);
-                SmokeLevel = SmokeLevel - 1;
                 
+                //cb.highlightedColor = colorActive;
+              //  buttonSmoke.colors = cb;
+                smoke.Emit(1);
+                SmokeLevel = SmokeLevel - 1;
+                Debug.Log("SmokeLevel:" + SmokeLevel );
 
             }
-            if (SmokeLevel <= 1)
+            if (SmokeLevel < 3)
             {
-                //Debug.Log("plus de smoke:");
-                smoke.Stop();
-                smokeOn = true;
-                SmokeButton();
-                // smokegameObject.SetActive(false);
-                //  cb.highlightedColor = colorRed;
-                //  buttonSmoke.colors = cb;
+                
+              //  cb.highlightedColor = colorRed;
+              //  buttonSmoke.colors = cb;
             }
               // Debug.Log("smokeOn");        
         }
-
-
-      
     }
           // buttons
    public void changeScene()
     {
         SceneManager.LoadScene(sceneNameToLoad);// change de scene
     }
+ /*  public void PlayTuto()
+    {
+        animator.SetBool("slideOut", true);
+        Debug.Log("slideOut");
+        animator.SetTrigger(_hashOnOff);
+        animator.SetBool("AnimBoutonType1", true);
+        Debug.Log("Tuto");
+        InGame = true;
 
+        SceneManager.LoadScene("TutoScene");
+    }   */
 
     public void ChangeScene(int ChangeScene)
     {
@@ -151,22 +143,14 @@ public class MainMenuInGame : MonoBehaviour {
     }
 
 
-  /*  public void Smokeon()
+    public void SmokeButton()
     {
-        smoke.Emit(1);
-    }  */
-        public void SmokeButton()
-    {
-       
-
-
+        
         ColorBlock smokeBoutonColor = buttonSmoke.colors;
       /*  smokeBoutonColor.normalColor = colorActive;
         smokeBoutonColor.normalColor = colorRed; */
         if (smokeOn == true)
         {
-
-            smoke.Stop();
             smokeBoutonColor.normalColor = colorRed;
             smokeBoutonColor.highlightedColor = colorRed;
             buttonSmoke.colors = smokeBoutonColor;
@@ -175,10 +159,8 @@ public class MainMenuInGame : MonoBehaviour {
             smokeOn = false;
             Debug.Log("smokeOff");
         }
-        if (smokeOn == false)
+        else
         {
-            //smokegameObject.SetActive(true);
-            smoke.Play();
             smokeBoutonColor.normalColor = colorActive;
             smokeBoutonColor.highlightedColor = colorActive;
             buttonSmoke.colors = smokeBoutonColor;
@@ -187,6 +169,20 @@ public class MainMenuInGame : MonoBehaviour {
             smokeOn = true;
             Debug.Log("smokeOn");
         }
+        /*
+        if (smokeOn == true)
+        {
+          
+
+            for (int i = SmokeLevel; i > 0; i--   )
+            {
+                SmokeLevel = SmokeLevel - 1 ;
+                if (SmokeLevel > 1) smoke.Emit(1);
+                // Debug.Log("smokeOn");
+                SmokeLevel = i;
+                if (SmokeLevel <= 1) smoke.Emit(0);
+            }
+        }      */
 
        
     }
@@ -195,28 +191,7 @@ public class MainMenuInGame : MonoBehaviour {
     public void MoteurSlideValeurChange(float newValue)
     {
         pourcentageManetteMoteur = newValue;
-       // Debug.Log("valeurMoteur:" + pourcentageManetteMoteur);
-        if (pourcentageManetteMoteur < 1)
-        {
-            ModeMoteur = 0;
-          scriptAnimReacteur.PlayAnimationReacteur(ModeMoteur);
-        }
-        if (pourcentageManetteMoteur < 40 && pourcentageManetteMoteur >1)
-        {
-            ModeMoteur = 1;          
-          scriptAnimReacteur.PlayAnimationReacteur(ModeMoteur);
-        }
-        if (pourcentageManetteMoteur < 65 && pourcentageManetteMoteur > 50)
-        {
-            ModeMoteur = 2;         
-           scriptAnimReacteur.PlayAnimationReacteur(ModeMoteur);
-        }
-      
-        if (pourcentageManetteMoteur>75)
-        {
-            ModeMoteur = 3;            
-          scriptAnimReacteur.PlayAnimationReacteur(ModeMoteur);
-        }
+        Debug.Log("valeurMoteur:" + pourcentageManetteMoteur);
     }
 
 

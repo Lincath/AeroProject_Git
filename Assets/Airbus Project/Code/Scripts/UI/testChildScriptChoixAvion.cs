@@ -16,50 +16,54 @@ public class testChildScriptChoixAvion : StageTypeScript {
         Debug.Log("testchild type stage = " + TestStageTypeSave);
 
 
+        /*
+        
         if (ModeDeJeu == "StageMode")
         {
 
        
             if (TestStageTypeSave == 1)
-        {
-            foreach (GameObject r in AvionsTypeVoltige)
             {
-                Destroy(r.gameObject);
-            }
-            foreach (GameObject r in AvionsTypeChasse)
-            {
-                Destroy(r.gameObject);
-            }
-          
-
-        }
-        if (TestStageTypeSave == 2)
-        {
-            foreach (GameObject r in AvionsTypeLigne)
-            {
-                Destroy(r.gameObject);
-            }
-            foreach (GameObject r in AvionsTypeChasse)
-            {
-                Destroy(r.gameObject);
-            }
-
-        }
-        if (TestStageTypeSave == 3)
-        {
-           
-                foreach (GameObject r in AvionsTypeLigne)
-                {
-                   Destroy(r.gameObject);
-                }
                 foreach (GameObject r in AvionsTypeVoltige)
                 {
                     Destroy(r.gameObject);
                 }
+                foreach (GameObject r in AvionsTypeChasse)
+                {
+                    Destroy(r.gameObject);
+                }
+          
+
+            }
+            if (TestStageTypeSave == 2)
+            {
+                foreach (GameObject r in AvionsTypeLigne)
+                {
+                    Destroy(r.gameObject);
+                }
+                foreach (GameObject r in AvionsTypeChasse)
+                {
+                    Destroy(r.gameObject);
+                }
+
+            }
+            if (TestStageTypeSave == 3)
+            {
+           
+                    foreach (GameObject r in AvionsTypeLigne)
+                    {
+                       Destroy(r.gameObject);
+                    }
+                    foreach (GameObject r in AvionsTypeVoltige)
+                    {
+                        Destroy(r.gameObject);
+                    }
            
 
+            }
         }
-        }
+        */
+
 
         if (TestStageTypeSave != typeAvion)
         {

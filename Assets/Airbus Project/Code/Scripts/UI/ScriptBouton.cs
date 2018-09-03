@@ -54,7 +54,7 @@ void Start () {
                 if (IdBouton == 3)  //cup
                 {
                     Debug.Log("IDCup");
-                  //  scriptMainMenu.PlayCup();
+                    scriptMainMenu.PlayCup();
                 }
                 if (IdBouton == 4) //hangar
                 {
