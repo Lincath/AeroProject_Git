@@ -5,6 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+  - ScaleCollider
+  - A220
+  - A350
+  - F-35
+  - Extra330
+  - Ligne
+  - Chasse
+  - Voltige
+  - F-35Infos
   layers:
   - Default
   - TransparentFX

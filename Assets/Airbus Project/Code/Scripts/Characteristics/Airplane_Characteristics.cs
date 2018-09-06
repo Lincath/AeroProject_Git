@@ -88,7 +88,7 @@ namespace WeLoveAero
         public float rollAngle;
 
         private float csEfficiencyValue;
-       
+
         #endregion
 
 
@@ -168,7 +168,7 @@ namespace WeLoveAero
 
         void CalculateLift()
         {
-            //récupere  l'angle d'attaque
+            //Get the angle of attack 
             angleOfAttack = Vector3.Dot(rb.velocity.normalized, transform.forward);
             angleOfAttack *= angleOfAttack;
             //Debug.Log(angleOfAttack);
@@ -178,12 +178,10 @@ namespace WeLoveAero
             float liftPower = liftCurve.Evaluate(normalizeMPH) * maxLiftPower;
             //Debug.Log(liftPower);
 
-            //Ajout flap lift
-            float finalLiftPower = flapLiftPower * input.NormalizedFlaps;
 
-            //Applique  le  final lift force au rigibody
-            Vector3 finalLiftForce = liftDir * (liftPower + finalLiftPower) * angleOfAttack;
-            rb.AddForce(finalLiftForce);
+            //Apply the final lift force to the rigibody
+            Vector3 finalLiftPower = liftDir * liftPower * angleOfAttack;
+            rb.AddForce(finalLiftPower);
         }
 
 
@@ -241,14 +239,9 @@ namespace WeLoveAero
         void HandleRoll()
         {
             Vector3 flatRight = transform.right;
-          
             flatRight.y = 0f;
-
-            
-            flatRight = flatRight.normalized ;
+            flatRight = flatRight.normalized;
             rollAngle = Vector3.SignedAngle(transform.right, flatRight,transform.forward);
-           
-
 
             Vector3 rollTorque = -input.Roll * rollSpeed * transform.forward * csEfficiencyValue;
             rb.AddTorque(rollTorque);

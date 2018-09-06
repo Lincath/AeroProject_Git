@@ -1,80 +1,96 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WeLoveAero;
 
-public class testChildScriptChoixAvion : StageTypeScript {
-    public int typeAvion;
-    GameObject[] AvionsTypeVoltige;
-    GameObject[] AvionsTypeChasse;
-    GameObject[] AvionsTypeLigne;
-    // Use this for initialization
-    void Start () {
-       
-        AvionsTypeVoltige = GameObject.FindGameObjectsWithTag("Voltige");
-        AvionsTypeChasse = GameObject.FindGameObjectsWithTag("Chasse");
-        AvionsTypeLigne = GameObject.FindGameObjectsWithTag("Ligne");
-        Debug.Log("testchild type stage = " + TestStageTypeSave);
+namespace WeLoveAero
+{
 
+    public class testChildScriptChoixAvion : MonoBehaviour
+    {
+        //scripts
+        public StageTypeScript stageTypeScript;
+        public MainMenu mainMenuScr;
 
-        /*
-        
-        if (ModeDeJeu == "StageMode")
+        public int typeAvion;
+        GameObject[] AvionsTypeVoltige;
+        GameObject[] AvionsTypeChasse;
+        GameObject[] AvionsTypeLigne;
+        // Use this for initialization
+        void Start()
         {
-
-       
-            if (TestStageTypeSave == 1)
-            {
-                foreach (GameObject r in AvionsTypeVoltige)
-                {
-                    Destroy(r.gameObject);
-                }
-                foreach (GameObject r in AvionsTypeChasse)
-                {
-                    Destroy(r.gameObject);
-                }
-          
-
-            }
-            if (TestStageTypeSave == 2)
-            {
-                foreach (GameObject r in AvionsTypeLigne)
-                {
-                    Destroy(r.gameObject);
-                }
-                foreach (GameObject r in AvionsTypeChasse)
-                {
-                    Destroy(r.gameObject);
-                }
-
-            }
-            if (TestStageTypeSave == 3)
-            {
+            Debug.Log("bonjour");
            
-                    foreach (GameObject r in AvionsTypeLigne)
+
+            AvionsTypeVoltige = GameObject.FindGameObjectsWithTag("Voltige");
+            AvionsTypeChasse = GameObject.FindGameObjectsWithTag("Chasse");
+            AvionsTypeLigne = GameObject.FindGameObjectsWithTag("Ligne");
+            if (stageTypeScript)
+            { 
+                if(stageTypeScript.TestStageTypeSave != null)
+               // Debug.Log("testchild type stage = " + stageTypeScript.TestStageTypeSave);
+
+                    
+                if (mainMenuScr.ModeDeJeu == "StageMode")
+                {
+
+
+                    if (stageTypeScript.TestStageTypeSave == 1)
                     {
-                       Destroy(r.gameObject);
+                        foreach (GameObject r in AvionsTypeVoltige)
+                        {
+                            Destroy(r.gameObject);
+                        }
+                        foreach (GameObject r in AvionsTypeChasse)
+                        {
+                            Destroy(r.gameObject);
+                        }
+
+
                     }
-                    foreach (GameObject r in AvionsTypeVoltige)
+                    if (stageTypeScript.TestStageTypeSave == 2)
                     {
-                        Destroy(r.gameObject);
+                        foreach (GameObject r in AvionsTypeLigne)
+                        {
+                            Destroy(r.gameObject);
+                        }
+                        foreach (GameObject r in AvionsTypeChasse)
+                        {
+                            Destroy(r.gameObject);
+                        }
+
                     }
-           
+                    if (stageTypeScript.TestStageTypeSave == 3)
+                    {
+
+                        foreach (GameObject r in AvionsTypeLigne)
+                        {
+                            Destroy(r.gameObject);
+                        }
+                        foreach (GameObject r in AvionsTypeVoltige)
+                        {
+                            Destroy(r.gameObject);
+                        }
+
+
+                    }
+                }
+
+
+                
+                if (stageTypeScript.TestStageTypeSave != typeAvion)
+                {
+                    this.enabled = false;
+                    Debug.Log("testchild type stage = " + stageTypeScript.TestStageTypeSave);
+                }
 
             }
         }
-        */
 
-
-        if (TestStageTypeSave != typeAvion)
+        // Update is called once per frame
+        void Update()
         {
-            this.enabled = false;
-            Debug.Log("testchild type stage = " + TestStageTypeSave);
-        }
 
+        }
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
