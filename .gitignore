@@ -2,3 +2,7 @@
 Assets/Airbus Project/Scenes/SceneGyro.unity
 Assets/Airbus Project/Code/Scripts/Figures/DetectFigure.cs
 Assets/Airbus Project/Scenes/Scene_Test_Figure.unity
+Assets/Airbus Project/Code/Scripts/Figures/LoopPrefabFigure.cs
+Assets/Airbus Project/Code/Scripts/Figures/LoopPrefabFigure.cs
+Assets/Airbus Project/Scenes/Scene_figure01.unity
+ProjectSettings/TagManager.asset

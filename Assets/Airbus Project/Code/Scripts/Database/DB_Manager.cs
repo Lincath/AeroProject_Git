@@ -65,7 +65,7 @@ public class DB_Manager : MonoBehaviour
 
     void Update()
     {
-       Debug.Log(con.State);
+      // Debug.Log(con.State);
     }
 
     bool IsValidLenght(string InputString, int LenghtString)
@@ -116,6 +116,7 @@ public class DB_Manager : MonoBehaviour
         if (!IsValidEmail(REmail.text))
         {
             RtxtInfos.text = "Invalid Email";
+            Handheld.Vibrate();
             cbEmail.normalColor = Color.red;
             REmail.colors = cbEmail;
             return false;
@@ -135,6 +136,7 @@ public class DB_Manager : MonoBehaviour
         {
             cbPseudo.normalColor = Color.red;
             RtxtInfos.text = "Invalid Pseudo";
+            Handheld.Vibrate();
             RPseudo.colors = cbPseudo;
             return false;
         }
@@ -151,6 +153,7 @@ public class DB_Manager : MonoBehaviour
         if (!IsValidLenght(RPassword.text, 5))
         {
             cbPassword.normalColor = Color.red;
+            Handheld.Vibrate();
             RtxtInfos.text = "Invalid Password";
             RPassword.colors = cbPassword;
             return false;
@@ -168,6 +171,7 @@ public class DB_Manager : MonoBehaviour
         if (!IsValidLenght(RYearOfBirth.text, 3))
         {
             cbYearOfBirth.normalColor = Color.red;
+            Handheld.Vibrate();
             RtxtInfos.text = "Invalid Year";
             RYearOfBirth.colors = cbYearOfBirth;
             return false;
@@ -176,6 +180,7 @@ public class DB_Manager : MonoBehaviour
         if (!IsValidLenghtYear(RYearOfBirth.text, 5))
         {
             cbYearOfBirth.normalColor = Color.red;
+            Handheld.Vibrate();
             RtxtInfos.text = "Invalid Year";
             RYearOfBirth.colors = cbYearOfBirth;
             return false;
@@ -190,6 +195,7 @@ public class DB_Manager : MonoBehaviour
         //Other
         if (!IsValidLenght(RLastName.text, 0) || !IsValidLenght(RFirstName.text, 0))
         {
+            Handheld.Vibrate();
             RtxtInfos.text = "Empty Not Autorized";
             return false;
         }
@@ -208,6 +214,7 @@ public class DB_Manager : MonoBehaviour
 
                 if(data !=null)
                 {
+                    Handheld.Vibrate();
                     RtxtInfos.text = "Pseudo Already Used";
                     MyReader.Close();
                     return false;
@@ -231,6 +238,7 @@ public class DB_Manager : MonoBehaviour
 
                 if (data != null)
                 {
+                    Handheld.Vibrate();
                     RtxtInfos.text = "Email Already Used";
                     MyReader.Close();
                     return false;
@@ -296,6 +304,7 @@ public class DB_Manager : MonoBehaviour
             MySqlDataReader MyReader = CmdSql.ExecuteReader();
             string data = null;
 
+            
             while (MyReader.Read())
             {
                 data = MyReader["password"].ToString();
@@ -309,7 +318,7 @@ public class DB_Manager : MonoBehaviour
                     IYearOfBirth = MyReader["yearofbirth"].ToString();
                     IPseudo = MyReader["pseudo"].ToString();
                     IPoints = (int)MyReader["points"];
-                    SceneManager.LoadScene("gametestkvn");
+                    SceneManager.LoadScene("CupMenu");
                 }
 
                 else

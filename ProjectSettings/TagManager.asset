@@ -5,9 +5,21 @@ TagManager:
   serializedVersion: 2
   tags:
   - ground
+<<<<<<< HEAD
   - small
   - medium
   - large
+=======
+  - ScaleCollider
+  - A220
+  - A350
+  - F-35
+  - Extra330
+  - Ligne
+  - Chasse
+  - Voltige
+  - F-35Infos
+>>>>>>> 9633515e850ae356027c3374ea08886c26782654
   layers:
   - Default
   - TransparentFX
