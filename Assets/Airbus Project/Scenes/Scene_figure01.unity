@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -89,12 +89,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-<<<<<<< HEAD
   m_LightingDataAsset: {fileID: 112000002, guid: d5970968d69354d44abe55705d7fda69,
     type: 2}
-=======
-  m_LightingDataAsset: {fileID: 0}
->>>>>>> 9633515e850ae356027c3374ea08886c26782654
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -3554,13 +3550,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-<<<<<<< HEAD
 --- !u!4 &384717216
 Transform:
-=======
---- !u!224 &658118385
-RectTransform:
->>>>>>> 9633515e850ae356027c3374ea08886c26782654
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 4323875509434030, guid: 5f05b406c32c9434f94ec21c04701ea0,
     type: 2}
@@ -9652,20 +9643,11 @@ GameObject:
   m_PrefabInternal: {fileID: 1953002866}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
   - component: {fileID: 1090163396}
   - component: {fileID: 1090163400}
   - component: {fileID: 1090163399}
   - component: {fileID: 1090163398}
   - component: {fileID: 1090163397}
-=======
-  - component: {fileID: 850731723}
-  - component: {fileID: 850731722}
-  - component: {fileID: 850731721}
-  - component: {fileID: 850731720}
-  - component: {fileID: 850731719}
-  - component: {fileID: 850731718}
->>>>>>> 9633515e850ae356027c3374ea08886c26782654
   m_Layer: 0
   m_Name: Arrow
   m_TagString: Untagged
@@ -9756,7 +9738,6 @@ MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 33295634962174880, guid: 98d349dad176195429d7b8428d9b9ea2,
     type: 2}
-<<<<<<< HEAD
   m_PrefabInternal: {fileID: 1953002866}
   m_GameObject: {fileID: 1090163395}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
@@ -9862,24 +9843,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fourArrow: {fileID: 0}
 --- !u!1 &1101251252
-=======
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 850731717}
-  m_LocalRotation: {x: -0, y: -0.023340398, z: -0, w: 0.9997276}
-  m_LocalPosition: {x: 0, y: 7.169983, z: 0}
-  m_LocalScale: {x: 3.4853, y: 3.4853, z: 3.4853}
-  m_Children:
-  - {fileID: 1889278517}
-  - {fileID: 1455765811}
-  - {fileID: 158144614}
-  - {fileID: 554676954}
-  - {fileID: 1944882638}
-  - {fileID: 1760783033}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: -2.6750002, z: 0}
---- !u!1 &879447883
->>>>>>> 9633515e850ae356027c3374ea08886c26782654
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 1179319404834990, guid: 98d349dad176195429d7b8428d9b9ea2,
@@ -11083,7 +11046,6 @@ MeshFilter:
   m_CorrespondingSourceObject: {fileID: 33015064854078840, guid: 5f05b406c32c9434f94ec21c04701ea0,
     type: 2}
   m_PrefabInternal: {fileID: 0}
-<<<<<<< HEAD
   m_GameObject: {fileID: 1306883011}
   m_Mesh: {fileID: 4300030, guid: 0a5b6c85101505647b87da703d0ae99a, type: 3}
 --- !u!1 &1321407573
@@ -11177,11 +11139,6 @@ MeshFilter:
   m_GameObject: {fileID: 1321407573}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1324362661
-=======
-  m_GameObject: {fileID: 1136217826}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1175854665
->>>>>>> 9633515e850ae356027c3374ea08886c26782654
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 1182254218935008, guid: 5f05b406c32c9434f94ec21c04701ea0,
@@ -12216,7 +12173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1480895190
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13123,7 +13080,6 @@ MonoBehaviour:
   axis: {x: 1, y: 0, z: 0}
   controlSurfaceGraphic: {fileID: 1981726308}
   smoothSpeed: 4
-<<<<<<< HEAD
 --- !u!1 &1652645897
 GameObject:
   m_ObjectHideFlags: 0
@@ -13164,8 +13120,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-=======
->>>>>>> 9633515e850ae356027c3374ea08886c26782654
 --- !u!1 &1662006743
 GameObject:
   m_ObjectHideFlags: 0
