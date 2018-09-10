@@ -21,6 +21,7 @@ public class LoopPrefabFigure : MonoBehaviour
     public string figureName;
 
     public GameObject nextCheckpoint;
+<<<<<<< HEAD
     public GameObject CurrentCheckpoint;
     public GameObject CurrentFigure;
 
@@ -31,6 +32,9 @@ public class LoopPrefabFigure : MonoBehaviour
 
     private CalculScore scriptScore;
 
+=======
+    private GameObject CurrentCheckpoint;
+>>>>>>> 718a624386c0b47fa3e970e6c0710d61afdbda33
 
 
 
@@ -52,7 +56,6 @@ public class LoopPrefabFigure : MonoBehaviour
 
     void Update()
     {
-
     }
 
     void Getcheckpoint(bool callOnstart)
@@ -66,7 +69,7 @@ public class LoopPrefabFigure : MonoBehaviour
             {
                 CurrentCheckpoint = CurrentCheckpoint.transform.parent.gameObject;
             }
-           
+            
             feedBackCheckPoint sn = CurrentCheckpoint.GetComponent<feedBackCheckPoint>();
             sn.setActiveArrows();
 
@@ -77,6 +80,10 @@ public class LoopPrefabFigure : MonoBehaviour
         {
             numberOnLoopStringMoreOne = (numberOnLoop + 1).ToString();
             nextCheckpoint = GameObject.Find(numberOnLoopStringMoreOne);
+<<<<<<< HEAD
+=======
+            Debug.Log(nextCheckpoint);
+>>>>>>> 718a624386c0b47fa3e970e6c0710d61afdbda33
 
             if (nextCheckpoint == null)
             {
@@ -87,11 +94,15 @@ public class LoopPrefabFigure : MonoBehaviour
             if (nextCheckpoint.transform.root != transform && nextCheckpoint.transform.parent.name == nextCheckpoint.name)
             {
                     nextCheckpoint = nextCheckpoint.transform.parent.gameObject;
-            }
+                }
+            
             feedBackCheckPoint sn = nextCheckpoint.GetComponent<feedBackCheckPoint>();
             sn.setActiveArrows();
-            
+
+               
         }
+            
+
 
     }
 
@@ -169,9 +180,12 @@ public class LoopPrefabFigure : MonoBehaviour
             if (checkPointPassageSuccess == 1)
             {
                 //Debug.Log("Perfect !!");
+<<<<<<< HEAD
                 nbrPerfect++;
 
 
+=======
+>>>>>>> 718a624386c0b47fa3e970e6c0710d61afdbda33
 
             }
 
