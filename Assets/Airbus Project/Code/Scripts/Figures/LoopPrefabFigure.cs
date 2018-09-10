@@ -21,7 +21,11 @@ public class LoopPrefabFigure : MonoBehaviour
     public string figureName;
 
     public GameObject nextCheckpoint;
-    private GameObject CurrentCheckpoint;
+    public GameObject CurrentCheckpoint;
+
+    private int nbrPerfect;
+    private int nbrGood;
+    private int nbrBad;
 
 
 
@@ -37,6 +41,7 @@ public class LoopPrefabFigure : MonoBehaviour
 
     void Update()
     {
+
     }
 
     void Getcheckpoint(bool callOnstart)
@@ -51,7 +56,7 @@ public class LoopPrefabFigure : MonoBehaviour
                 //Debug.Log("is a child !");
                 CurrentCheckpoint = CurrentCheckpoint.transform.parent.gameObject;
             }
-            
+           
             feedBackCheckPoint sn = CurrentCheckpoint.GetComponent<feedBackCheckPoint>();
             sn.setActiveArrows();
         }
@@ -60,7 +65,7 @@ public class LoopPrefabFigure : MonoBehaviour
         {
             numberOnLoopStringMoreOne = (numberOnLoop + 1).ToString();
             nextCheckpoint = GameObject.Find(numberOnLoopStringMoreOne);
-            Debug.Log(nextCheckpoint);
+            //Debug.Log(nextCheckpoint);
 
             if (nextCheckpoint == null)
             {
@@ -72,15 +77,11 @@ public class LoopPrefabFigure : MonoBehaviour
             {
                     // Debug.Log("is a child !");
                     nextCheckpoint = nextCheckpoint.transform.parent.gameObject;
-                }
-            
+            }
             feedBackCheckPoint sn = nextCheckpoint.GetComponent<feedBackCheckPoint>();
             sn.setActiveArrows();
-
-               
-        }
             
-
+        }
 
     }
 
@@ -155,7 +156,7 @@ public class LoopPrefabFigure : MonoBehaviour
 
             if (checkPointPassageSuccess == 1)
             {
-                //Debug.Log("Perfect !!");
+                Debug.Log("Perfect !!");
 
                 CheckpointSuccess.text = "Perfect !!";
                 
