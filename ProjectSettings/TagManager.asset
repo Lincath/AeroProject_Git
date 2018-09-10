@@ -10,6 +10,8 @@ TagManager:
   - small
   - BorderFigure
   - onGoingFigure
+  - plane
+  - limiteFigure
   layers:
   - Default
   - TransparentFX

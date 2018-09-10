@@ -50,7 +50,7 @@ public class StageTypeScript : MonoBehaviour
 
     void Start () {
            // TextInfosContent = gameObject.GetComponent<Text>();
-           // TextInfosContent.text = "";
+            TextInfosContent.text = "";
 
 
 
