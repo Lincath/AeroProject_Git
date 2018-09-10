@@ -27,7 +27,7 @@ public class DB_Manager : MonoBehaviour
     [Header("INFO USER")]
     public string IPseudo;
     public string IFirstName, ILastName, IEmail, IPhoneNumber, IAddress, IYearOfBirth;
-    public int IPoints;
+    public int IPoints, IPoints2, IPoints3, IPoints4, IPoints5;
 
     private void Start()
     {
@@ -114,7 +114,6 @@ public class DB_Manager : MonoBehaviour
 
     bool IsValid()
     {
-
         #region Pseudo
         //Pseudo
         ColorBlock cbPseudo = RPseudo.colors;
@@ -149,20 +148,20 @@ public class DB_Manager : MonoBehaviour
 
                 if (data != null)
                 {
-                   // cbPseudo.normalColor = Color.red;
+                    cbPseudo.normalColor = Color.red;
                     RtxtInfos.text = "Pseudo Already Used";
                     Handheld.Vibrate();
-                    //RPseudo.colors = cbPseudo;
+                    RPseudo.colors = cbPseudo;
                     MyReader.Close();
                     return false;
                 }
 
-               /* else
+               else
                 {
                     cbPseudo.normalColor = Color.white;
                     RtxtInfos.text = "";
                     RPseudo.colors = cbPseudo;
-                }*/
+                }
             }
             MyReader.Close();
         }
@@ -203,10 +202,10 @@ public class DB_Manager : MonoBehaviour
 
                 if (data != null)
                 {
-                    //cbEmail.normalColor = Color.red;
+                    cbEmail.normalColor = Color.red;
                     RtxtInfos.text = "Email Already Used";
                     Handheld.Vibrate();
-                    //REmail.colors = cbEmail;
+                    REmail.colors = cbEmail;
                     MyReader.Close();
                     return false;
                 }
@@ -284,7 +283,7 @@ public class DB_Manager : MonoBehaviour
             RtxtInfos.text = "";
             RLastName.colors = cbLastName;
         }
-#endregion
+        #endregion
 
         #region Phone Number
         //Phone Number
@@ -366,7 +365,7 @@ public class DB_Manager : MonoBehaviour
     {
         if (IsValid())
         {
-            string cmd = "INSERT INTO `users` (`id`, `pseudo`, `password`, `lastname`, `firstname`, `email`, `yearofbirth`, `phonenumber`, `address`, `points`) VALUES(NULL, '" + RPseudo.text + "', '" + Md5Sum(RPassword.text) + "', '" + RLastName.text + "', '" + RFirstName.text + "', '" + REmail.text + "', '" + RYearOfBirth.text + "', '" + RPhoneNumber.text + "', '" + RAddress.text + "','0')";
+            string cmd = "INSERT INTO `users` (`id`, `pseudo`, `password`, `lastname`, `firstname`, `email`, `yearofbirth`, `phonenumber`, `address`, `points`, `points2`, `points3`, `points4`, `points5`) VALUES(NULL, '" + RPseudo.text + "', '" + Md5Sum(RPassword.text) + "', '" + RLastName.text + "', '" + RFirstName.text + "', '" + REmail.text + "', '" + RYearOfBirth.text + "', '" + RPhoneNumber.text + "', '" + RAddress.text + "','0')";
             MySqlCommand CmdSql = new MySqlCommand(cmd, con);
 
             try
@@ -433,6 +432,10 @@ public class DB_Manager : MonoBehaviour
                     IAddress = MyReader["address"].ToString();
                     IPseudo = MyReader["pseudo"].ToString();
                     IPoints = (int)MyReader["points"];
+                    IPoints2 = (int)MyReader["points2"];
+                    IPoints3 = (int)MyReader["points3"];
+                    IPoints4 = (int)MyReader["points4"];
+                    IPoints5 = (int)MyReader["points5"];
                     SceneManager.LoadScene("CupMenu");
                 }
 
@@ -464,6 +467,7 @@ public class DB_Manager : MonoBehaviour
         CanvasRegister.gameObject.SetActive(false);
     }
 
+    #region Save Points Database
     public void savePoints()
     {
         string cmd = "UPDATE `users` SET `points`=" + IPoints + " WHERE `pseudo`= '" + IPseudo + "'";
@@ -481,6 +485,76 @@ public class DB_Manager : MonoBehaviour
         }
     }
 
+    public void savePoints2()
+    {
+        string cmd = "UPDATE `users` SET `points2`=" + IPoints2 + " WHERE `pseudo`= '" + IPseudo + "'";
+        MySqlCommand CmdSql = new MySqlCommand(cmd, con);
+
+        try
+        {
+            CmdSql.ExecuteReader();
+            Debug.Log("update successful");
+        }
+
+        catch (Exception Ex)
+        {
+            Debug.Log(Ex.ToString());
+        }
+    }
+
+    public void savePoints3()
+    {
+        string cmd = "UPDATE `users` SET `points3`=" + IPoints3 + " WHERE `pseudo`= '" + IPseudo + "'";
+        MySqlCommand CmdSql = new MySqlCommand(cmd, con);
+
+        try
+        {
+            CmdSql.ExecuteReader();
+            Debug.Log("update successful");
+        }
+
+        catch (Exception Ex)
+        {
+            Debug.Log(Ex.ToString());
+        }
+    }
+
+    public void savePoints4()
+    {
+        string cmd = "UPDATE `users` SET `points4`=" + IPoints4 + " WHERE `pseudo`= '" + IPseudo + "'";
+        MySqlCommand CmdSql = new MySqlCommand(cmd, con);
+
+        try
+        {
+            CmdSql.ExecuteReader();
+            Debug.Log("update successful");
+        }
+
+        catch (Exception Ex)
+        {
+            Debug.Log(Ex.ToString());
+        }
+    }
+
+    public void savePoints5()
+    {
+        string cmd = "UPDATE `users` SET `points5`=" + IPoints5 + " WHERE `pseudo`= '" + IPseudo + "'";
+        MySqlCommand CmdSql = new MySqlCommand(cmd, con);
+
+        try
+        {
+            CmdSql.ExecuteReader();
+            Debug.Log("update successful");
+        }
+
+        catch (Exception Ex)
+        {
+            Debug.Log(Ex.ToString());
+        }
+    }
+    #endregion
+
+    #region Leaderboards
     public string LeaderBoard(int Limit)
     {
         try
@@ -503,4 +577,97 @@ public class DB_Manager : MonoBehaviour
             return null;
         }
     }
+
+    public string LeaderBoard2(int Limit)
+    {
+        try
+        {
+            connect_BDD();
+            MySqlCommand CmdSql = new MySqlCommand("SELECT * FROM `users` order by `points2` DESC LIMIT " + Limit, con);
+            MySqlDataReader MyReader = CmdSql.ExecuteReader();
+
+            string data = null;
+            while (MyReader.Read())
+            {
+                data += MyReader["pseudo"].ToString() + ":" + MyReader["points2"] + "\n";
+            }
+            MyReader.Close();
+            return data;
+        }
+
+        catch
+        {
+            return null;
+        }
+    }
+
+    public string LeaderBoard3(int Limit)
+    {
+        try
+        {
+            connect_BDD();
+            MySqlCommand CmdSql = new MySqlCommand("SELECT * FROM `users` order by `points3` DESC LIMIT " + Limit, con);
+            MySqlDataReader MyReader = CmdSql.ExecuteReader();
+
+            string data = null;
+            while (MyReader.Read())
+            {
+                data += MyReader["pseudo"].ToString() + ":" + MyReader["points3"] + "\n";
+            }
+            MyReader.Close();
+            return data;
+        }
+
+        catch
+        {
+            return null;
+        }
+    }
+
+    public string LeaderBoard4(int Limit)
+    {
+        try
+        {
+            connect_BDD();
+            MySqlCommand CmdSql = new MySqlCommand("SELECT * FROM `users` order by `points4` DESC LIMIT " + Limit, con);
+            MySqlDataReader MyReader = CmdSql.ExecuteReader();
+
+            string data = null;
+            while (MyReader.Read())
+            {
+                data += MyReader["pseudo"].ToString() + ":" + MyReader["points4"] + "\n";
+            }
+            MyReader.Close();
+            return data;
+        }
+
+        catch
+        {
+            return null;
+        }
+    }
+
+    public string LeaderBoard5(int Limit)
+    {
+        try
+        {
+            connect_BDD();
+            MySqlCommand CmdSql = new MySqlCommand("SELECT * FROM `users` order by `points5` DESC LIMIT " + Limit, con);
+            MySqlDataReader MyReader = CmdSql.ExecuteReader();
+
+            string data = null;
+            while (MyReader.Read())
+            {
+                data += MyReader["pseudo"].ToString() + ":" + MyReader["points5"] + "\n";
+            }
+            MyReader.Close();
+            return data;
+        }
+
+        catch
+        {
+            return null;
+        }
+    }
+    #endregion
 }
