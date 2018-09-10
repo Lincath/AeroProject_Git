@@ -9,7 +9,6 @@ using UnityEngine.SceneManagement;
 
 public class DB_Manager : MonoBehaviour
 {
-
     public static DB_Manager instance;
     [Header("DATABASE")]
     public string host;
@@ -17,7 +16,7 @@ public class DB_Manager : MonoBehaviour
     [Header("REGISTER")]
     public Canvas CanvasRegister;
     public InputField RPseudo;
-    public InputField RPassword, RLastName, RFirstName, REmail, RYearOfBirth;
+    public InputField REmail, RPassword, RFirstName, RLastName, RPhoneNumber, RAddress, RYearOfBirth;
     public Text RtxtInfos;
     MySqlConnection con;
     [Header("LOGIN")]
@@ -27,7 +26,7 @@ public class DB_Manager : MonoBehaviour
     public Text LtxtInfos;
     [Header("INFO USER")]
     public string IPseudo;
-    public string ILastName, IFirstName, IEmail, IYearOfBirth;
+    public string IFirstName, ILastName, IEmail, IPhoneNumber, IAddress, IYearOfBirth;
     public int IPoints;
 
     private void Start()
@@ -41,6 +40,7 @@ public class DB_Manager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         else
         {
             instance = this;
@@ -57,6 +57,7 @@ public class DB_Manager : MonoBehaviour
             con = new MySqlConnection(cmd);
             con.Open();
         }
+
         catch (Exception ex)
         {
             Debug.Log(ex.ToString());
@@ -68,6 +69,7 @@ public class DB_Manager : MonoBehaviour
       // Debug.Log(con.State);
     }
 
+    #region Caracteres Requis
     bool IsValidLenght(string InputString, int LenghtString)
     {
         if (InputString.Length > LenghtString)
@@ -81,7 +83,7 @@ public class DB_Manager : MonoBehaviour
         }
     }
 
-    bool IsValidLenghtYear(string InputString, int LenghtString)
+    bool IsValidLenghtMax(string InputString, int LenghtString)
     {
         if (InputString.Length < LenghtString)
         {
@@ -93,6 +95,7 @@ public class DB_Manager : MonoBehaviour
             return false;
         }
     }
+    #endregion
 
     bool IsValidEmail(string InputEmail)
     {
@@ -102,6 +105,7 @@ public class DB_Manager : MonoBehaviour
         {
             return true;
         }
+
         else
         {
             return false;
@@ -110,25 +114,8 @@ public class DB_Manager : MonoBehaviour
 
     bool IsValid()
     {
-        //Verification de l'Email
-        ColorBlock cbEmail = REmail.colors;
 
-        if (!IsValidEmail(REmail.text))
-        {
-            RtxtInfos.text = "Invalid Email";
-            Handheld.Vibrate();
-            cbEmail.normalColor = Color.red;
-            REmail.colors = cbEmail;
-            return false;
-        }
-
-        else
-        {
-            RtxtInfos.text = "";
-            cbEmail.normalColor = Color.white;
-            REmail.colors = cbEmail;
-        }
-
+        #region Pseudo
         //Pseudo
         ColorBlock cbPseudo = RPseudo.colors;
 
@@ -140,64 +127,12 @@ public class DB_Manager : MonoBehaviour
             RPseudo.colors = cbPseudo;
             return false;
         }
+
         else
         {
             cbPseudo.normalColor = Color.white;
             RtxtInfos.text = "";
             RPseudo.colors = cbPseudo;
-        }
-
-        //Password
-        ColorBlock cbPassword = RPassword.colors;
-
-        if (!IsValidLenght(RPassword.text, 5))
-        {
-            cbPassword.normalColor = Color.red;
-            Handheld.Vibrate();
-            RtxtInfos.text = "Invalid Password";
-            RPassword.colors = cbPassword;
-            return false;
-        }
-        else
-        {
-            cbPassword.normalColor = Color.white;
-            RtxtInfos.text = "";
-            RPassword.colors = cbPassword;
-        }
-
-        //YearOfBirth
-        ColorBlock cbYearOfBirth = RYearOfBirth.colors;
-
-        if (!IsValidLenght(RYearOfBirth.text, 3))
-        {
-            cbYearOfBirth.normalColor = Color.red;
-            Handheld.Vibrate();
-            RtxtInfos.text = "Invalid Year";
-            RYearOfBirth.colors = cbYearOfBirth;
-            return false;
-        }
-
-        if (!IsValidLenghtYear(RYearOfBirth.text, 5))
-        {
-            cbYearOfBirth.normalColor = Color.red;
-            Handheld.Vibrate();
-            RtxtInfos.text = "Invalid Year";
-            RYearOfBirth.colors = cbYearOfBirth;
-            return false;
-        }
-        else
-        {
-            cbYearOfBirth.normalColor = Color.white;
-            RtxtInfos.text = "";
-            RYearOfBirth.colors = cbYearOfBirth;
-        }
-
-        //Other
-        if (!IsValidLenght(RLastName.text, 0) || !IsValidLenght(RFirstName.text, 0))
-        {
-            Handheld.Vibrate();
-            RtxtInfos.text = "Empty Not Autorized";
-            return false;
         }
 
         //Verification existance pseudo
@@ -212,17 +147,47 @@ public class DB_Manager : MonoBehaviour
             {
                 data = MyReader["password"].ToString();
 
-                if(data !=null)
+                if (data != null)
                 {
-                    Handheld.Vibrate();
+                   // cbPseudo.normalColor = Color.red;
                     RtxtInfos.text = "Pseudo Already Used";
+                    Handheld.Vibrate();
+                    //RPseudo.colors = cbPseudo;
                     MyReader.Close();
                     return false;
                 }
+
+               /* else
+                {
+                    cbPseudo.normalColor = Color.white;
+                    RtxtInfos.text = "";
+                    RPseudo.colors = cbPseudo;
+                }*/
             }
             MyReader.Close();
         }
-        catch(Exception Ex) { Debug.Log(Ex.ToString()); }
+        catch (Exception Ex) { Debug.Log(Ex.ToString()); }
+        #endregion
+
+        #region Email
+        //Verification de l'Email
+        ColorBlock cbEmail = REmail.colors;
+
+        if (!IsValidEmail(REmail.text))
+        {
+            cbEmail.normalColor = Color.red;
+            RtxtInfos.text = "Invalid Email";
+            Handheld.Vibrate();
+            REmail.colors = cbEmail;
+            return false;
+        }
+ 
+        else
+        {
+            RtxtInfos.text = "";
+            cbEmail.normalColor = Color.white;
+            REmail.colors = cbEmail;
+        }
 
         //Verification existance email
         try
@@ -238,15 +203,160 @@ public class DB_Manager : MonoBehaviour
 
                 if (data != null)
                 {
-                    Handheld.Vibrate();
+                    //cbEmail.normalColor = Color.red;
                     RtxtInfos.text = "Email Already Used";
+                    Handheld.Vibrate();
+                    //REmail.colors = cbEmail;
                     MyReader.Close();
                     return false;
+                }
+
+                else
+                {
+                    RtxtInfos.text = "";
+                    cbEmail.normalColor = Color.white;
+                    REmail.colors = cbEmail;
                 }
             }
             MyReader.Close();
         }
         catch (Exception Ex) { Debug.Log(Ex.ToString()); }
+        #endregion
+
+        #region Password      
+        //Password
+        ColorBlock cbPassword = RPassword.colors;
+
+        if (!IsValidLenght(RPassword.text, 5))
+        {
+            cbPassword.normalColor = Color.red;
+            RtxtInfos.text = "Invalid Password";
+            Handheld.Vibrate();
+            RPassword.colors = cbPassword;
+            return false;
+        }
+
+        else
+        {
+            cbPassword.normalColor = Color.white;
+            RtxtInfos.text = "";
+            RPassword.colors = cbPassword;
+        }
+        #endregion
+
+        #region First Name
+        //First Name
+        ColorBlock cbFirstName = RFirstName.colors;
+
+        if (!IsValidLenght(RFirstName.text, 1))
+        {
+            cbFirstName.normalColor = Color.red;
+            RtxtInfos.text = "Please Enter Your First Name";
+            Handheld.Vibrate();
+            RFirstName.colors = cbFirstName;
+            return false;
+        }
+
+        else
+        {
+            cbFirstName.normalColor = Color.white;
+            RtxtInfos.text = "";
+            RFirstName.colors = cbFirstName;
+        }
+        #endregion
+
+        #region Last Name
+        //Last Name
+        ColorBlock cbLastName = RLastName.colors;
+
+        if (!IsValidLenght(RLastName.text, 1))
+        {
+            cbLastName.normalColor = Color.red;
+            RtxtInfos.text = "Please Enter Your Last Name";
+            Handheld.Vibrate();
+            RLastName.colors = cbLastName;
+            return false;
+        }
+
+        else
+        {
+            cbLastName.normalColor = Color.white;
+            RtxtInfos.text = "";
+            RLastName.colors = cbLastName;
+        }
+#endregion
+
+        #region Phone Number
+        //Phone Number
+        ColorBlock cbPhoneNumber = RPhoneNumber.colors;
+
+        if (!IsValidLenght(RPhoneNumber.text, 7))
+        {
+            cbPhoneNumber.normalColor = Color.red;
+            RtxtInfos.text = "Please Enter Your Phone Number";
+            Handheld.Vibrate();
+            RPhoneNumber.colors = cbPhoneNumber;
+            return false;
+        }
+
+        else
+        {
+            cbPhoneNumber.normalColor = Color.white;
+            RtxtInfos.text = "";
+            RPhoneNumber.colors = cbPhoneNumber;
+        }
+        #endregion
+
+        #region Address
+        //Address
+        ColorBlock cbAddress = RAddress.colors;
+
+        if (!IsValidLenght(RAddress.text, 15))
+        {
+            cbAddress.normalColor = Color.red;
+            RtxtInfos.text = "Please Enter Your Full Address";
+            Handheld.Vibrate();
+            RAddress.colors = cbAddress;
+            return false;
+        }
+
+        else
+        {
+            cbAddress.normalColor = Color.white;
+            RtxtInfos.text = "";
+            RAddress.colors = cbAddress;
+        }
+        #endregion
+
+        #region Year Of Birth
+        //YearOfBirth
+        ColorBlock cbYearOfBirth = RYearOfBirth.colors;
+
+        if (!IsValidLenght(RYearOfBirth.text, 3))
+        {
+            cbYearOfBirth.normalColor = Color.red;
+            RtxtInfos.text = "Invalid Year";
+            Handheld.Vibrate();
+            RYearOfBirth.colors = cbYearOfBirth;
+            return false;
+        }
+
+        if (!IsValidLenghtMax(RYearOfBirth.text, 5))
+        {
+            cbYearOfBirth.normalColor = Color.red;
+            RtxtInfos.text = "Invalid Year";
+            Handheld.Vibrate();
+            RYearOfBirth.colors = cbYearOfBirth;
+            return false;
+        }
+
+        else
+        {
+            cbYearOfBirth.normalColor = Color.white;
+            RtxtInfos.text = "";
+            RYearOfBirth.colors = cbYearOfBirth;
+        }
+        #endregion
 
         RtxtInfos.text = null;
         return true;
@@ -256,7 +366,7 @@ public class DB_Manager : MonoBehaviour
     {
         if (IsValid())
         {
-            string cmd = "INSERT INTO `users` (`id`, `pseudo`, `password`, `lastname`, `firstname`, `email`, `yearofbirth`, `points`) VALUES(NULL, '" + RPseudo.text + "', '" + Md5Sum(RPassword.text) + "', '" + RLastName.text + "', '" + RFirstName.text + "', '" + REmail.text + "', '" + RYearOfBirth.text + "','0')";
+            string cmd = "INSERT INTO `users` (`id`, `pseudo`, `password`, `lastname`, `firstname`, `email`, `yearofbirth`, `phonenumber`, `address`, `points`) VALUES(NULL, '" + RPseudo.text + "', '" + Md5Sum(RPassword.text) + "', '" + RLastName.text + "', '" + RFirstName.text + "', '" + REmail.text + "', '" + RYearOfBirth.text + "', '" + RPhoneNumber.text + "', '" + RAddress.text + "','0')";
             MySqlCommand CmdSql = new MySqlCommand(cmd, con);
 
             try
@@ -264,17 +374,20 @@ public class DB_Manager : MonoBehaviour
                 CmdSql.ExecuteReader();
                 RtxtInfos.text = "Register Succesfull";
             }
+
             catch (Exception Ex)
             {
                 RtxtInfos.text = Ex.ToString();
             }
         }
+
         else
         {
             Debug.Log("non valide");
         }
     }
 
+    #region Cryptage Password
     string Md5Sum(string strToEncrypt)
     {
         System.Text.UTF8Encoding ue = new System.Text.UTF8Encoding();
@@ -294,6 +407,7 @@ public class DB_Manager : MonoBehaviour
 
         return hashString.PadLeft(32, '0');
     }
+    #endregion
 
     public void Login()
     {
@@ -303,7 +417,6 @@ public class DB_Manager : MonoBehaviour
             MySqlCommand CmdSql = new MySqlCommand("SELECT * FROM `users` WHERE `pseudo`='" + LPseudo.text + "'", con);
             MySqlDataReader MyReader = CmdSql.ExecuteReader();
             string data = null;
-
             
             while (MyReader.Read())
             {
@@ -316,6 +429,8 @@ public class DB_Manager : MonoBehaviour
                     IFirstName = MyReader["firstname"].ToString();
                     IEmail = MyReader["email"].ToString();
                     IYearOfBirth = MyReader["yearofbirth"].ToString();
+                    IPhoneNumber = MyReader["phonenumber"].ToString();
+                    IAddress = MyReader["address"].ToString();
                     IPseudo = MyReader["pseudo"].ToString();
                     IPoints = (int)MyReader["points"];
                     SceneManager.LoadScene("CupMenu");
@@ -333,6 +448,7 @@ public class DB_Manager : MonoBehaviour
             }
             MyReader.Close();
         }
+
         catch (Exception Ex) { Debug.Log(Ex.ToString()); }
     }
 
@@ -358,6 +474,7 @@ public class DB_Manager : MonoBehaviour
             CmdSql.ExecuteReader();
             Debug.Log("update successful");
         }
+
         catch (Exception Ex)
         {
             Debug.Log(Ex.ToString());
@@ -380,6 +497,7 @@ public class DB_Manager : MonoBehaviour
             MyReader.Close();
             return data;
         }
+
         catch
         {
             return null;
