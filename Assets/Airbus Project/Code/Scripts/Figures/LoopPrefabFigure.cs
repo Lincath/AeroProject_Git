@@ -21,20 +21,15 @@ public class LoopPrefabFigure : MonoBehaviour
     public string figureName;
 
     public GameObject nextCheckpoint;
-<<<<<<< HEAD
     public GameObject CurrentCheckpoint;
     public GameObject CurrentFigure;
 
     private int nbrPerfect;
     private int nbrGood;
     private int nbrBad;
-    private int nbrMiss;
 
     private CalculScore scriptScore;
 
-=======
-    private GameObject CurrentCheckpoint;
->>>>>>> 718a624386c0b47fa3e970e6c0710d61afdbda33
 
 
 
@@ -43,7 +38,6 @@ public class LoopPrefabFigure : MonoBehaviour
         numberOnLoop = 1;
         checkPointPassageSuccess = 0;
         CheckpointSuccess.enabled = false;
-        scoreTxt.enabled = false;
 
         alreadyIncrease = false;
         Getcheckpoint(true);
@@ -56,6 +50,7 @@ public class LoopPrefabFigure : MonoBehaviour
 
     void Update()
     {
+
     }
 
     void Getcheckpoint(bool callOnstart)
@@ -69,7 +64,7 @@ public class LoopPrefabFigure : MonoBehaviour
             {
                 CurrentCheckpoint = CurrentCheckpoint.transform.parent.gameObject;
             }
-            
+           
             feedBackCheckPoint sn = CurrentCheckpoint.GetComponent<feedBackCheckPoint>();
             sn.setActiveArrows();
 
@@ -80,10 +75,6 @@ public class LoopPrefabFigure : MonoBehaviour
         {
             numberOnLoopStringMoreOne = (numberOnLoop + 1).ToString();
             nextCheckpoint = GameObject.Find(numberOnLoopStringMoreOne);
-<<<<<<< HEAD
-=======
-            Debug.Log(nextCheckpoint);
->>>>>>> 718a624386c0b47fa3e970e6c0710d61afdbda33
 
             if (nextCheckpoint == null)
             {
@@ -94,15 +85,11 @@ public class LoopPrefabFigure : MonoBehaviour
             if (nextCheckpoint.transform.root != transform && nextCheckpoint.transform.parent.name == nextCheckpoint.name)
             {
                     nextCheckpoint = nextCheckpoint.transform.parent.gameObject;
-                }
-            
+            }
             feedBackCheckPoint sn = nextCheckpoint.GetComponent<feedBackCheckPoint>();
             sn.setActiveArrows();
-
-               
-        }
             
-
+        }
 
     }
 
@@ -172,6 +159,7 @@ public class LoopPrefabFigure : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
+     
         if (other.gameObject.tag == "large")
         {
            // CheckpointSuccess.enabled = true;
@@ -180,12 +168,9 @@ public class LoopPrefabFigure : MonoBehaviour
             if (checkPointPassageSuccess == 1)
             {
                 //Debug.Log("Perfect !!");
-<<<<<<< HEAD
                 nbrPerfect++;
 
 
-=======
->>>>>>> 718a624386c0b47fa3e970e6c0710d61afdbda33
 
             }
 
@@ -215,12 +200,10 @@ public class LoopPrefabFigure : MonoBehaviour
 
                 while (other.gameObject.name != numberOnLoopString)
                 {
-                    Debug.Log("nom du checkpoint = " + other.gameObject.name);
-                    Debug.Log("on loop while");
+                   // Debug.Log("nom du checkpoint = " + other.gameObject.name);
                     numberOnLoop++;
                     numberOnLoopString = numberOnLoop.ToString();
-                    nbrMiss++;
-                    Debug.Log(numberOnLoop);
+                   // Debug.Log("nombre loop = " + numberOnLoop);
                     return;
                 }
 
@@ -232,7 +215,7 @@ public class LoopPrefabFigure : MonoBehaviour
                 Handheld.Vibrate();
 
                 StartCoroutine(WaitAndDisable());
-                scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad, nbrMiss);
+                scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad);
             }
 
             else if (checkPointPassageSuccess == 6)
@@ -241,7 +224,7 @@ public class LoopPrefabFigure : MonoBehaviour
                 Handheld.Vibrate();
 
                 StartCoroutine(WaitAndDisable());
-                scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad, nbrMiss);
+                scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad);
             }
 
             else if (checkPointPassageSuccess == 7)
@@ -250,7 +233,7 @@ public class LoopPrefabFigure : MonoBehaviour
                 Handheld.Vibrate();
 
                 StartCoroutine(WaitAndDisable());
-                scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad, nbrMiss);
+                scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad);
             }
 
             if (!alreadyIncrease)
@@ -265,18 +248,24 @@ public class LoopPrefabFigure : MonoBehaviour
 
         }
 
-        else if (other.gameObject.tag == "lmiteFigure")
+        else if (other.gameObject.tag == "limiteFigure")
         {
+            Handheld.Vibrate();
 
+            StartCoroutine(WaitAndDisable());
+            scriptScore.scoreTotalFigure(0, 0, 0);
         }
-            
+
+       // Debug.Log("totalBad =  " + nbrBad + " totalGood =  " + nbrGood + " totalrPerfect =  " + nbrPerfect);
+       // Debug.Log("nombre loop = " + numberOnLoop);
+
+
     }
 
 
     public IEnumerator WaitAndDisable()
     {
         yield return new WaitForSeconds(3);
-        scoreTxt.enabled = false;
         CheckpointSuccess.enabled = false;
 
     }

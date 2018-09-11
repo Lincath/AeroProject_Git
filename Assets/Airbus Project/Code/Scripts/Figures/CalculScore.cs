@@ -26,9 +26,10 @@ public class CalculScore : MonoBehaviour {
     void Start () {
 
         scoreFigure = 100;
-
         pourcentGood = 50;
         pourcentBad = 25;
+
+
         plane =  GameObject.FindWithTag("plane");
         scriptPrefab = plane.GetComponent<LoopPrefabFigure>();
         
@@ -51,20 +52,18 @@ public class CalculScore : MonoBehaviour {
        /* Debug.Log(perfectScore);
         Debug.Log(goodScore);
         Debug.Log(badScore);*/
-        
     }
 
 
 
 	
-    public void scoreTotalFigure (int nbrPerfect, int nbrGood, int nbrBad, int nbrMiss)
+    public void scoreTotalFigure (int nbrPerfect, int nbrGood, int nbrBad)
     {
         Debug.Log("Perfect = " + nbrPerfect);
         Debug.Log("Good = " + nbrGood);
         Debug.Log("Bad = " + nbrBad);
-        Debug.Log("Miss = " + nbrMiss);
 
-        if (nbrPerfect + nbrGood + nbrBad + nbrMiss == nbrCheckpoint)
+        if (nbrPerfect + nbrGood + nbrBad <= nbrCheckpoint)
         {
             Debug.Log("not an error ! ");
 
@@ -73,17 +72,21 @@ public class CalculScore : MonoBehaviour {
             scriptPrefab.CheckpointSuccess.enabled = true;
             scriptPrefab.scoreTxt.text = scoreTotal.ToString();
 
-
-
             
-
-
             if (scoreTotal == 100)
             {
+                scriptPrefab.CheckpointSuccess.color = Color.yellow;
                 scriptPrefab.CheckpointSuccess.text = "PERFECT Figure !";
+            }
+
+            else if (scoreTotal == 0)
+            {
+                scriptPrefab.CheckpointSuccess.color = Color.red;
+                scriptPrefab.CheckpointSuccess.text = "FIGURE FAILED !";
             }
             else
             {
+                scriptPrefab.CheckpointSuccess.color = Color.black;
                 scriptPrefab.CheckpointSuccess.text = "Figure finished";
             }
 
