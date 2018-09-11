@@ -5,50 +5,45 @@ using UnityEngine.UI;
 
 public class InfosPlayer : MonoBehaviour {
 
-    public Text txtPseudo, txtPoints, txtleaderboard, txtPoints2, txtleaderboard2, txtPoints3, txtleaderboard3, txtPoints4, txtleaderboard4, txtPoints5, txtleaderboard5;
+    public Text txtPseudo, txtPoints, txtleaderboard, txtleaderboard2, txtleaderboard3, txtleaderboard4, txtleaderboard5;
     DB_Manager manager;
     public Text containerPoints, containerLeaderboard;
+    public string MyPoints;
 
     // Use this for initialization
 	void Start () {
         manager = GameObject.Find("MySqlManager").GetComponent<DB_Manager>();
-        txtPseudo.text = "Pseudo " + manager.IPseudo;
-        //txtPoints.text = "Event 1 " + manager.IPoints;
-       // txtPoints2.text = "Event 2 " + manager.IPoints2;
-       // txtPoints3.text = "Event 3 " + manager.IPoints3;
-       // txtPoints4.text = "Event 4 " + manager.IPoints4;
-      //  txtPoints5.text = "Event 5 " + manager.IPoints5;
-        containerPoints.text = "My Points " + txtPoints.text;
+        txtPseudo.text = "Pseudo: " + manager.IPseudo;
     }
 
     #region Add Points
     public void addPoints() {
         manager.IPoints += 10;
-        txtPoints.text = "Points " + manager.IPoints;
+        txtPoints.text = "" + manager.IPoints;
     }
 
     public void addPoints2()
     {
         manager.IPoints2 += 5;
-        txtPoints2.text = "Points2 " + manager.IPoints2;
+        txtPoints.text = "" + manager.IPoints2;
     }
 
     public void addPoints3()
     {
         manager.IPoints3 += 15;
-        txtPoints3.text = "Points3 " + manager.IPoints3;
+        txtPoints.text = "" + manager.IPoints3;
     }
 
     public void addPoints4()
     {
         manager.IPoints4 += 20;
-        txtPoints4.text = "Points4 " + manager.IPoints4;
+        txtPoints.text = "" + manager.IPoints4;
     }
 
     public void addPoints5()
     {
         manager.IPoints5 += 25;
-        txtPoints5.text = "Points5 " + manager.IPoints5;
+        txtPoints.text = "" + manager.IPoints5;
     }
     #endregion
 
@@ -79,12 +74,15 @@ public class InfosPlayer : MonoBehaviour {
     }
     #endregion
 
-    #region Leaderboards
+    #region Scores
     public void Leaderboard()
     {
         string data = manager.LeaderBoard(10);
         txtleaderboard.text = data;
         containerLeaderboard.text = txtleaderboard.text;
+
+        MyPoints = "My Points: " + manager.IPoints;
+        containerPoints.text = MyPoints;
     }
 
     public void Leaderboard2()
@@ -92,6 +90,9 @@ public class InfosPlayer : MonoBehaviour {
         string data = manager.LeaderBoard2(10);
         txtleaderboard2.text = data;
         containerLeaderboard.text = txtleaderboard2.text;
+
+        MyPoints = "My Points: " + manager.IPoints2;
+        containerPoints.text = MyPoints;
     }
 
     public void Leaderboard3()
@@ -99,6 +100,9 @@ public class InfosPlayer : MonoBehaviour {
         string data = manager.LeaderBoard3(10);
         txtleaderboard3.text = data;
         containerLeaderboard.text = txtleaderboard3.text;
+
+        MyPoints = "My Points: " + manager.IPoints3;
+        containerPoints.text = MyPoints;
     }
 
     public void Leaderboard4()
@@ -106,6 +110,9 @@ public class InfosPlayer : MonoBehaviour {
         string data = manager.LeaderBoard4(10);
         txtleaderboard4.text = data;
         containerLeaderboard.text = txtleaderboard4.text;
+
+        MyPoints = "My Points: " + manager.IPoints4;
+        containerPoints.text = MyPoints;
     }
 
     public void Leaderboard5()
@@ -113,6 +120,9 @@ public class InfosPlayer : MonoBehaviour {
         string data = manager.LeaderBoard5(10);
         txtleaderboard5.text = data;
         containerLeaderboard.text = txtleaderboard5.text;
+
+        MyPoints = "My Points: " + manager.IPoints5;
+        containerPoints.text = MyPoints;
     }
     #endregion
 }

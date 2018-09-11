@@ -1,15 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AeroProject_Git", "AeroProject_Git.csproj", "{320F1FF7-7433-F280-F4EB-5F46728B7CA3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AeroProject_Git", "AeroProject_Git.csproj", "{320F1FF7-7433-F280-F4EB-5F46728B7CA3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AeroProject_Git.Editor", "AeroProject_Git.Editor.csproj", "{617BD0BA-79ED-968E-B151-BC063CF069E3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AeroProject_Git.Editor", "AeroProject_Git.Editor.csproj", "{617BD0BA-79ED-968E-B151-BC063CF069E3}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AeroProject_Git.Editor", "AeroProject_Git.Editor.csproj", "{617BD0BA-79ED-968E-B151-BC063CF069E3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AeroProject_Git.Editor", "AeroProject_Git.Editor.csproj", "{617BD0BA-79ED-968E-B151-BC063CF069E3}"
 EndProject
@@ -23,22 +17,6 @@ Global
 		{320F1FF7-7433-F280-F4EB-5F46728B7CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320F1FF7-7433-F280-F4EB-5F46728B7CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320F1FF7-7433-F280-F4EB-5F46728B7CA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{320F1FF7-7433-F280-F4EB-5F46728B7CA3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{320F1FF7-7433-F280-F4EB-5F46728B7CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{320F1FF7-7433-F280-F4EB-5F46728B7CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{320F1FF7-7433-F280-F4EB-5F46728B7CA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{617BD0BA-79ED-968E-B151-BC063CF069E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -46,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEF5E936-C752-43FF-8892-9CCDC6F1B77F}
 	EndGlobalSection
 EndGlobal

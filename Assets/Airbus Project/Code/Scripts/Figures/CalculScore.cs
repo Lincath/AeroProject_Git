@@ -68,9 +68,9 @@ public class CalculScore : MonoBehaviour {
             Debug.Log("not an error ! ");
 
             scoreTotal = (perfectScore * nbrPerfect) + (goodScore * nbrGood) + (badScore * nbrBad);
-            scriptPrefab.scoreTxt.enabled = true;
-            scriptPrefab.CheckpointSuccess.enabled = true;
-            scriptPrefab.scoreTxt.text = scoreTotal.ToString();
+            //scriptPrefab.scoreTxt.enabled = true;
+          //  scriptPrefab.CheckpointSuccess.enabled = true;
+          //  scriptPrefab.scoreTxt.text = scoreTotal.ToString();
 
             
             if (scoreTotal == 100)
