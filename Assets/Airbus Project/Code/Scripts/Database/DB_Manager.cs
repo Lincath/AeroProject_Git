@@ -17,6 +17,14 @@ public class DB_Manager : MonoBehaviour
     public Canvas CanvasRegister;
     public InputField RPseudo;
     public InputField REmail, RPassword, RFirstName, RLastName, RPhoneNumber, RAddress, RYearOfBirth;
+    List<string> genders = new List<string>() { "Select Gender", "Man", "Woman" };
+    public Dropdown gender;
+    public Text selectedGender;
+    public bool IsValidGender;
+    List<string> profiles = new List<string>() { "Select Profile", "I am a Pilot", "I am an Aero Fan", "I am a Gamer" };
+    public Dropdown profile;
+    public Text selectedProfile;
+    public bool IsValidProfile;
     public Text RtxtInfos;
     MySqlConnection con;
     [Header("LOGIN")]
@@ -26,12 +34,14 @@ public class DB_Manager : MonoBehaviour
     public Text LtxtInfos;
     [Header("INFO USER")]
     public string IPseudo;
-    public string IFirstName, ILastName, IEmail, IPhoneNumber, IAddress, IYearOfBirth;
+    public string IFirstName, ILastName, IEmail, IGender, IPhoneNumber, IAddress, IYearOfBirth, IProfile;
     public int IPoints, IPoints2, IPoints3, IPoints4, IPoints5;
 
     private void Start()
     {
         connect_BDD();
+
+        PopulateList();
     }
 
     void Awake()
@@ -97,6 +107,7 @@ public class DB_Manager : MonoBehaviour
     }
     #endregion
 
+    #region Validation Email Format
     bool IsValidEmail(string InputEmail)
     {
         Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
@@ -111,6 +122,45 @@ public class DB_Manager : MonoBehaviour
             return false;
         }
     }
+    #endregion
+
+    #region Validation Dropdown
+    void PopulateList()
+    {
+        gender.AddOptions(genders);
+        profile.AddOptions(profiles);
+    }
+
+    public void Dropdown_IndexChangedGender(int index)
+    {
+        selectedGender.text = genders[index];
+        if (index == 0)
+        {
+            selectedGender.color = Color.red;
+            IsValidGender = false;
+        }
+        else
+        {
+            selectedGender.color = Color.white;
+            IsValidGender = true;
+        }
+    }
+
+    public void Dropdown_IndexChangedProfile(int index)
+    {
+        selectedProfile.text = profiles[index];
+        if (index == 0)
+        {
+            selectedProfile.color = Color.red;
+            IsValidProfile = false;
+        }
+        else
+        {
+            selectedProfile.color = Color.white;
+            IsValidProfile = true;
+        }
+    }
+    #endregion
 
     bool IsValid()
     {
@@ -285,6 +335,26 @@ public class DB_Manager : MonoBehaviour
         }
         #endregion
 
+        #region Gender
+        ColorBlock cbGender = gender.colors;
+
+        if (IsValidGender == false)
+        {
+            cbGender.normalColor = Color.red;
+            RtxtInfos.text = "Select Your Gender";
+            Handheld.Vibrate();
+            gender.colors = cbGender;
+            return false;
+        }
+
+        else
+        {
+            cbGender.normalColor = Color.white;
+            RtxtInfos.text = "";
+            gender.colors = cbGender;
+        }
+        #endregion
+
         #region Phone Number
         //Phone Number
         ColorBlock cbPhoneNumber = RPhoneNumber.colors;
@@ -357,6 +427,26 @@ public class DB_Manager : MonoBehaviour
         }
         #endregion
 
+        #region Profile
+        ColorBlock cbProfile = profile.colors;
+
+        if (IsValidProfile == false)
+        {
+            cbProfile.normalColor = Color.red;
+            RtxtInfos.text = "Select Your Profile";
+            Handheld.Vibrate();
+            profile.colors = cbProfile;
+            return false;
+        }
+
+        else
+        {
+            cbProfile.normalColor = Color.white;
+            RtxtInfos.text = "";
+            profile.colors = cbProfile;
+        }
+        #endregion
+
         RtxtInfos.text = null;
         return true;
     }
@@ -365,7 +455,7 @@ public class DB_Manager : MonoBehaviour
     {
         if (IsValid())
         {
-            string cmd = "INSERT INTO `users` (`id`, `pseudo`, `password`, `lastname`, `firstname`, `email`, `yearofbirth`, `phonenumber`, `address`, `points`, `points2`, `points3`, `points4`, `points5`) VALUES(NULL, '" + RPseudo.text + "', '" + Md5Sum(RPassword.text) + "', '" + RLastName.text + "', '" + RFirstName.text + "', '" + REmail.text + "', '" + RYearOfBirth.text + "', '" + RPhoneNumber.text + "', '" + RAddress.text + "','0')";
+            string cmd = "INSERT INTO `users` (`id`, `pseudo`, `email`, `password`, `firstname`, `lastname`, `gender`, `phonenumber`, `address`, `yearofbirth`, `profile`, `points`, `points2`, `points3`, `points4`, `points5`) VALUES(NULL, '" + RPseudo.text + "', '" + REmail.text + "', '" + Md5Sum(RPassword.text) + "', '" + RFirstName.text + "', '" + RLastName.text + "', '" + selectedGender.text + "', '" + RPhoneNumber.text + "', '" + RAddress.text + "','" + RYearOfBirth.text + "', '" + selectedProfile.text + "','0','0','0','0','0')";
             MySqlCommand CmdSql = new MySqlCommand(cmd, con);
 
             try
@@ -424,12 +514,14 @@ public class DB_Manager : MonoBehaviour
                 if (data == Md5Sum(LPassword.text))
                 {
                     LtxtInfos.text = "Login Successfull";
-                    ILastName = MyReader["lastname"].ToString();
-                    IFirstName = MyReader["firstname"].ToString();
                     IEmail = MyReader["email"].ToString();
-                    IYearOfBirth = MyReader["yearofbirth"].ToString();
+                    IFirstName = MyReader["firstname"].ToString();
+                    ILastName = MyReader["lastname"].ToString();
+                    IGender = MyReader["gender"].ToString();
                     IPhoneNumber = MyReader["phonenumber"].ToString();
                     IAddress = MyReader["address"].ToString();
+                    IYearOfBirth = MyReader["yearofbirth"].ToString();
+                    IProfile = MyReader["profile"].ToString();
                     IPseudo = MyReader["pseudo"].ToString();
                     IPoints = (int)MyReader["points"];
                     IPoints2 = (int)MyReader["points2"];
@@ -455,6 +547,7 @@ public class DB_Manager : MonoBehaviour
         catch (Exception Ex) { Debug.Log(Ex.ToString()); }
     }
 
+    #region Show Register or Login
     public void ShowRegister()
     {
         CanvasLogin.gameObject.SetActive(false);
@@ -466,6 +559,7 @@ public class DB_Manager : MonoBehaviour
         CanvasLogin.gameObject.SetActive(true);
         CanvasRegister.gameObject.SetActive(false);
     }
+    #endregion
 
     #region Save Points Database
     public void savePoints()
