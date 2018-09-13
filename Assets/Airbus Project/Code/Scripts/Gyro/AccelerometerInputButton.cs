@@ -39,6 +39,8 @@ public class AccelerometerInputButton : MonoBehaviour
 
     private Vector3 angleValue;
 
+    private int multiplicateurDeltaTime = 60;
+
 
 
     // Use this for initialization
@@ -87,7 +89,7 @@ public class AccelerometerInputButton : MonoBehaviour
                     panelLeft.SetActive(true);
 
 
-                    transform.Rotate(Input.acceleration.y - inclinMinY, 0, 0);
+                    transform.Rotate((Input.acceleration.y - inclinMinY)* Time.deltaTime * multiplicateurDeltaTime * 10, 0, 0);
                     transform.Rotate(0, 0, -Input.acceleration.x);
 
                 }
@@ -98,7 +100,7 @@ public class AccelerometerInputButton : MonoBehaviour
                     // panelRight.SetActive(true);
 
 
-                    transform.Rotate(Input.acceleration.y - inclinMinY, 0, 0);
+                    transform.Rotate((Input.acceleration.y - inclinMinY) * Time.deltaTime * multiplicateurDeltaTime * 10, 0, 0);
                     transform.Rotate(0, 0, -Input.acceleration.x);
 
                 }
@@ -124,14 +126,14 @@ public class AccelerometerInputButton : MonoBehaviour
 
                 else
                 {
-                    transform.Rotate(0, Input.acceleration.x * 1.5f, 0);
+                    transform.Rotate(0, (Input.acceleration.x * 1.5f) * Time.deltaTime * multiplicateurDeltaTime, 0);
 
                     SmoothPlane(false); ///////////////////////////
 
                     //Debug.Log("neutre");
                 }
 
-                transform.Rotate(Input.acceleration.y - inclinMinY, 0, 0);
+                transform.Rotate((Input.acceleration.y - inclinMinY) * Time.deltaTime * multiplicateurDeltaTime, 0, 0);
             }
 
 
@@ -164,7 +166,7 @@ public class AccelerometerInputButton : MonoBehaviour
         // Debug.Log("pink fluffy unicorn dancing on rainbows");
         if (smoothUpRight)
         {
-            transform.Rotate(0, 0, -Input.acceleration.x * Time.deltaTime * speedUpRhightPosition);
+            transform.Rotate(0, 0, (-Input.acceleration.x * Time.deltaTime * speedUpRhightPosition) * Time.deltaTime * multiplicateurDeltaTime);
 
             if (angleValue.z < 20 || angleValue.z > 340)
             {
@@ -191,14 +193,14 @@ public class AccelerometerInputButton : MonoBehaviour
 
             {
 
-                transform.Rotate(0, 0, -Input.acceleration.x * smoothAngle);
+                transform.Rotate(0, 0, (-Input.acceleration.x * smoothAngle) * Time.deltaTime * multiplicateurDeltaTime);
             }
 
             else if (angleValue.z < rotationTurnMax)
 
             {
 
-                transform.Rotate(0, 0, -Input.acceleration.x * smoothAngle);
+                transform.Rotate(0, 0, (-Input.acceleration.x * smoothAngle) * Time.deltaTime * multiplicateurDeltaTime);
             }
 
 

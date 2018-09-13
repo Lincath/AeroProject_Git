@@ -15,7 +15,11 @@ public class feedBackCheckPoint : MonoBehaviour
         transformArrow = this.gameObject.transform.GetChild(0);
         fourArrow = this.gameObject.transform.GetChild(0).gameObject;
 
-        setUnactiveArrows();
+
+        if (gameObject.transform.name != "1")
+        {
+            fourArrow.SetActive(false);
+        }
 
     }
 
@@ -27,11 +31,31 @@ public class feedBackCheckPoint : MonoBehaviour
 
     public void setActiveArrows()
     {
-        fourArrow.SetActive(true);
+        if(fourArrow == null)
+        {
+            fourArrow = this.gameObject.transform.GetChild(0).gameObject;
+            
+            fourArrow.SetActive(true);
+        }
+
+       else
+        {
+            fourArrow.SetActive(true);
+        }
+        
     }
+
+
 
     public void setUnactiveArrows()
     {
+        //gameObject.SetActive(false);
+       /* Renderer m_Renderer = fourArrow.GetComponent<Renderer>();
+        if (m_Renderer != null)
+        {
+            m_Renderer.enabled = false;
+        }*/
+
         fourArrow.SetActive(false);
     }
 }

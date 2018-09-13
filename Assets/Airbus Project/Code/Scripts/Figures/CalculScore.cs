@@ -35,10 +35,16 @@ public class CalculScore : MonoBehaviour {
         
 
 
-        if (gameObject.transform.name == "loopCollider")
+        if (gameObject.transform.name == "loopCollider(Clone)")
         {
             nbrCheckpoint = 12;
            
+        }
+
+        else if (gameObject.transform.name == "slopeCollider(Clone)")
+        {
+            nbrCheckpoint = 5;
+
         }
         else
         {
@@ -59,18 +65,18 @@ public class CalculScore : MonoBehaviour {
 	
     public void scoreTotalFigure (int nbrPerfect, int nbrGood, int nbrBad)
     {
-        Debug.Log("Perfect = " + nbrPerfect);
+       /* Debug.Log("Perfect = " + nbrPerfect);
         Debug.Log("Good = " + nbrGood);
-        Debug.Log("Bad = " + nbrBad);
+        Debug.Log("Bad = " + nbrBad);*/
 
         if (nbrPerfect + nbrGood + nbrBad <= nbrCheckpoint)
         {
-            Debug.Log("not an error ! ");
+            //Debug.Log("not an error ! ");
 
             scoreTotal = (perfectScore * nbrPerfect) + (goodScore * nbrGood) + (badScore * nbrBad);
-            //scriptPrefab.scoreTxt.enabled = true;
-          //  scriptPrefab.CheckpointSuccess.enabled = true;
-          //  scriptPrefab.scoreTxt.text = scoreTotal.ToString();
+            scriptPrefab.scoreTxt.enabled = true;
+            scriptPrefab.CheckpointSuccess.enabled = true;
+            scriptPrefab.scoreTxt.text = scoreTotal.ToString();
 
             
             if (scoreTotal == 100)

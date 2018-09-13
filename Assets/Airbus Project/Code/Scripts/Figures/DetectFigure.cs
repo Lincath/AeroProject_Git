@@ -291,8 +291,8 @@ public class DetectFigure : MonoBehaviour
 
         if (Input.touchCount == 2)
         {
-            Debug.Log("angle = " + updateAngleValueEuler.x);
-            Debug.Log("angle mémoire = " + angleMinStepInvertedLoop);
+           // Debug.Log("angle = " + updateAngleValueEuler.x);
+            //Debug.Log("angle mémoire = " + angleMinStepInvertedLoop);
         }
     }
 
@@ -456,8 +456,8 @@ public class DetectFigure : MonoBehaviour
             
             stepInvertedLoop = 0;
 
-            Debug.Log("angle = " + updateAngleValueEuler.x);
-            Debug.Log("angle mémoire = " + angleMinStepInvertedLoop);
+           // Debug.Log("angle = " + updateAngleValueEuler.x);
+           // Debug.Log("angle mémoire = " + angleMinStepInvertedLoop);
             enterInvertedLoop = false;
         }
 
