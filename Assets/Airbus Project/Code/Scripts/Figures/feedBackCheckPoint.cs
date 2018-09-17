@@ -49,13 +49,6 @@ public class feedBackCheckPoint : MonoBehaviour
 
     public void setUnactiveArrows()
     {
-        //gameObject.SetActive(false);
-       /* Renderer m_Renderer = fourArrow.GetComponent<Renderer>();
-        if (m_Renderer != null)
-        {
-            m_Renderer.enabled = false;
-        }*/
-
         fourArrow.SetActive(false);
     }
 }

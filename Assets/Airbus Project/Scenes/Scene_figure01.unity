@@ -1788,6 +1788,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabFigure:
+  - {fileID: 0}
   - {fileID: 1985671263585724, guid: 0521fc6357e29bc42b7983f5b9482de3, type: 2}
   - {fileID: 1618765344243364, guid: fd60a00861882974989f5a989b9f14f7, type: 2}
   alreadyPlace: 0
