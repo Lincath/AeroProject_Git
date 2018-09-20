@@ -6,6 +6,7 @@ public class FigureManager : MonoBehaviour {
 
     private GameObject plane;
     private Vector3 planePosition;
+    private Quaternion planeRotation;
 
     public GameObject[] prefabFigure;
     public bool alreadyPlace;
@@ -13,11 +14,29 @@ public class FigureManager : MonoBehaviour {
     private GameObject newFigure;
     private int futureFigure;
 
-	// Use this for initialization
-	void Start () {
+    private FigureChoice scriptArrayFigure;
+
+    private int numberStage;
+    private int numberFigure;
+    private int[,] figure;
+
+    // Use this for initialization
+    void Start () {
+
+        numberStage = 0;
+        numberFigure = 0;
+
         plane = GameObject.FindWithTag("plane");
         alreadyPlace = false;
         futureFigure = 0;
+        scriptArrayFigure = gameObject.GetComponent<FigureChoice>();
+
+        Debug.Log("whé");
+
+        scriptArrayFigure.setTravelingVariable();
+        figure = scriptArrayFigure.travelingFigureArray;
+        //figure[scriptArrayFigure.travelingLevelFigure, i]
+
 
     }
 
@@ -27,7 +46,7 @@ public class FigureManager : MonoBehaviour {
 
     void Update () {
 
-        if (Input.touchCount > 1 && !alreadyPlace)
+        if (!alreadyPlace)
         {
             placePlane();
         }
@@ -39,8 +58,11 @@ public class FigureManager : MonoBehaviour {
     void placePlane()
     {
         planePosition = plane.transform.position;
+        planeRotation = Quaternion.Euler(new Vector3(0, plane.transform.rotation.eulerAngles.y, 0));
+        Debug.Log(planeRotation);
+        
 
-        newFigure = Instantiate(prefabFigure[futureFigure], planePosition, Quaternion.identity);
+        newFigure = Instantiate(prefabFigure[figure[scriptArrayFigure.travelingLevelFigure, futureFigure]], planePosition, planeRotation);
         alreadyPlace = true;
 
         //Debug.Log(newFigure);
@@ -48,14 +70,23 @@ public class FigureManager : MonoBehaviour {
 
         
         scriptLoopPrefabFigure.setScript();
-     
+        futureFigure++;
+
 
 
     }
 
     public void allowToPlace()
     {
-        alreadyPlace = false;
+        Debug.Log("working");
+        StartCoroutine(alreadyPlaceToFalse());
     }
 
+    IEnumerator alreadyPlaceToFalse()
+    {
+        yield return new WaitForSeconds(0.5f);
+        Debug.Log("placer figure");
+        alreadyPlace = false;
+
+    }
 }

@@ -9,7 +9,8 @@ public class CalculScore : MonoBehaviour {
     private float goodScore;
     private float badScore;
 
-    private float scoreTotal;
+    private float actualScore;
+    private static float scoreTotal;
 
     private float pourcentGood;
     private float pourcentBad;
@@ -73,19 +74,18 @@ public class CalculScore : MonoBehaviour {
         {
             //Debug.Log("not an error ! ");
 
-            scoreTotal = (perfectScore * nbrPerfect) + (goodScore * nbrGood) + (badScore * nbrBad);
-            scriptPrefab.scoreTxt.enabled = true;
+            actualScore = (perfectScore * nbrPerfect) + (goodScore * nbrGood) + (badScore * nbrBad);
+            //scriptPrefab.scoreTxt.enabled = true;
             scriptPrefab.CheckpointSuccess.enabled = true;
-            scriptPrefab.scoreTxt.text = scoreTotal.ToString();
 
             
-            if (scoreTotal == 100)
+            if (actualScore == 100)
             {
                 scriptPrefab.CheckpointSuccess.color = Color.yellow;
                 scriptPrefab.CheckpointSuccess.text = "PERFECT Figure !";
             }
 
-            else if (scoreTotal == 0)
+            else if (actualScore == 0)
             {
                 scriptPrefab.CheckpointSuccess.color = Color.red;
                 scriptPrefab.CheckpointSuccess.text = "FIGURE FAILED !";
@@ -96,14 +96,18 @@ public class CalculScore : MonoBehaviour {
                 scriptPrefab.CheckpointSuccess.text = "Figure finished";
             }
 
-            //Debug.Log(scoreTotal);
+            scoreTotal += actualScore;
+            scriptPrefab.scoreTxt.text = scoreTotal.ToString();
+
+            //Debug.Log(actualScore);
             Destroy(gameObject);
+            
         }
 
         else
         {
             Debug.Log("error");
-            scoreTotal = scoreFigure / 2;
+            actualScore = scoreFigure / 2;
 
         }
 

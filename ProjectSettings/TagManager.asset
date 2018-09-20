@@ -12,6 +12,7 @@ TagManager:
   - plane
   - onGoingFigure
   - dummy
+  - manager
   layers:
   - Default
   - TransparentFX

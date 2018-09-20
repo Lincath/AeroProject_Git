@@ -29,6 +29,8 @@ public class LoopPrefabFigure : MonoBehaviour
     private int nbrBad;
 
     private CalculScore scriptScore;
+    private FigureManager managerScript;
+    private GameObject manager;
 
 
 
@@ -40,8 +42,14 @@ public class LoopPrefabFigure : MonoBehaviour
         CheckpointSuccess.enabled = false;
 
         alreadyIncrease = false;
-        
-       
+
+        manager = GameObject.FindWithTag("manager");
+        managerScript = manager.GetComponent<FigureManager>();
+      
+
+
+
+
     }
 
 
@@ -245,6 +253,8 @@ public class LoopPrefabFigure : MonoBehaviour
 
                 StartCoroutine(WaitAndDisable());
                 scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad);
+                managerScript.allowToPlace();
+                variableReset();
             }
 
             else if (checkPointPassageSuccess == 6)
@@ -254,6 +264,8 @@ public class LoopPrefabFigure : MonoBehaviour
 
                 StartCoroutine(WaitAndDisable());
                 scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad);
+                managerScript.allowToPlace();
+                variableReset();
             }
 
             else if (checkPointPassageSuccess == 7)
@@ -263,6 +275,8 @@ public class LoopPrefabFigure : MonoBehaviour
 
                 StartCoroutine(WaitAndDisable());
                 scriptScore.scoreTotalFigure(nbrPerfect, nbrGood, nbrBad);
+                managerScript.allowToPlace();
+                variableReset();
             }
 
             if (!alreadyIncrease)
@@ -283,6 +297,8 @@ public class LoopPrefabFigure : MonoBehaviour
 
             StartCoroutine(WaitAndDisable());
             scriptScore.scoreTotalFigure(0, 0, 0);
+            managerScript.allowToPlace();
+            variableReset();
         }
         
 
@@ -295,5 +311,12 @@ public class LoopPrefabFigure : MonoBehaviour
         yield return new WaitForSeconds(3);
         CheckpointSuccess.enabled = false;
 
+    }
+
+    private void variableReset()
+    {
+        nbrPerfect = 0;
+        nbrGood = 0;
+        nbrBad = 0;
     }
 }

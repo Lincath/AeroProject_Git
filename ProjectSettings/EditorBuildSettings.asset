@@ -21,6 +21,12 @@ EditorBuildSettings:
     path: Assets/Airbus Project/Scenes/Database.unity
     guid: d7e7223dad26a424eafd12f104af0805
   - enabled: 1
-    path: Assets/Airbus Project/Scenes/CupMenu.unity
+    path: Assets/Airbus Project/Scenes/gametestkvn.unity
     guid: d664e8502b295af4880968a14a1b456b
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/Scene_figure01.unity
+    guid: 1ec89be56a8247d4e9ea9db6be4f53e1
+  - enabled: 1
+    path: Assets/Airbus Project/Scenes/LevelEditor.unity
+    guid: 74e9b496d72779747b25df688e22bc23
   m_configObjects: {}
